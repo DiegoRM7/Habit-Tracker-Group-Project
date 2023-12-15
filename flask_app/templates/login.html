@@ -16,9 +16,9 @@
             <a href="/" class="col-6 text-end fw-bold top-title">Don't Have an Account? Register</a>
         </div>
         <div class="row justify-content-around">
-            <div class="col-5 px-5 pb-3 bg-dark">
+            <div class="col-6 px-5 pb-3 bg-dark bg-gradient">
                 <div class="row mt-5 pt-3">
-                    <h1 class="col-10 text-success">Login</h1>
+                    <h1 class="col-12 text-success fw-semibold text-center mb-4">Login</h1>
                 </div>
                 <!--? flashes for no session in use, so return back to login page-->
                 <!-- {% with messages = get_flashed_messages(category_filter=["no_session"]) %}
@@ -41,15 +41,15 @@
                 </div>
                 {% endif %}
                 {% endwith %} -->
-                
+
                 <form class="text-white" action="/login/user" method="post">
-                    <div class="pb-2 pt-1">
-                        <label for="email">Email:</label>
-                        <input class="input-group" id="email" type="text" name="email">
+                    <div class="pb-2 pt-1 input-group-text border-0 bg-transparent fw-semibold justify-content-md-between">
+                        <label class="text-start text-white" for="email">Email:</label>
+                        <input class="form-control hover-shadow rounded-2 ms-2 border-black w-50" id="email" type="text" name="email">
                     </div>
-                    <div class="pb-2 pt-1">
-                        <label for="password">Password:</label>
-                        <input class="input-group" id="password" type="password" name="password">
+                    <div class="pb-2 pt-1 input-group-text border-0 bg-transparent fw-semibold justify-content-md-between">
+                        <label class="text-start text-white" for="password">Password:</label>
+                        <input class="form-control hover-shadow rounded-2 ms-2 border-black w-50" id="password" type="password" name="password">
                     </div>
                     <input class="btn my-2 btn-success" type="submit" value="Login"></input>
                 </form>
