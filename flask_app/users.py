@@ -14,25 +14,25 @@ def login():
 
 
 @app.get("/welcome")
-def login():
+def welcome():
     return "welcome template"
 
 
 @app.get("/habit details")
-def login():
-    return "details template"
+def habitdetails():
+    return "habit details template"
 
 
 @app.get("/update")
-def login():
+def update():
     return "update template"
 
 
 @app.get("/account details")
-def login():
+def accountdetails():
     return "account details template"
 
 
 @app.get("/create habit")
-def login():
+def createhabit():
     return "create habit template"
