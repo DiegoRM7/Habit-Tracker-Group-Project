@@ -1,4 +1,5 @@
 """"this file is going to be the users controllers file"""
+"""all routes and controllers have been added in its entirely"""
 from flask import render_template
 from flask_app import app
 
