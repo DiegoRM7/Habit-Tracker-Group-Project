@@ -1,0 +1,5 @@
+Check the pipfile to see if it matches your python version.
+Change the version in the pipfile if it doesn't match. 
+In the terminal from the directory level of server.py run"
+python3 -m pipenv install
+or your computer's equavilant 
