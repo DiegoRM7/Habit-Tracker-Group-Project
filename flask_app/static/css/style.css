@@ -2,3 +2,31 @@ html {
     background-color: darkblue;
     color: aliceblue;
 }
+
+.top-title {
+    text-shadow: 2px 2px 5px #777777;
+}
+
+.input-image {
+    width: 300px;
+    height: 200px;
+    text-align:center;
+}
+
+.show-listing-image {
+    width: 500px;
+    height: 400px;
+    text-align:center;
+}
+
+.overflow-scroll {
+    height: 450px;
+}
+
+.hover-opacity:hover {
+    opacity: 0.7;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.562), 0 1px 1px rgba(0, 0, 0, 0.514);
+}
