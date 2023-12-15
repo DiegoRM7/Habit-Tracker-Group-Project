@@ -1,18 +1,50 @@
+
+""""this file is going to be the users controllers file"""
+"""all routes and controllers have been added in its entirely"""
 from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models import user # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
-# Create Users Controller
+from flask import render_template
+from flask_app import app
 
 
+@app.get("/")
+def register():
+    return "register template"
 
-# Read Users Controller
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@app.get("/login")
+def login():
+    return "login template"
+
+
+@app.get("/welcome")
+def welcome():
+    return "welcome template"
+
+
+@app.get("/habit details")
+def habitdetails():
+    return "habit details template"
+
+
+@app.get("/update")
+def update():
+    return "update template"
+
+
+@app.get("/account details")
+def accountdetails():
+    return "account details template"
+
+
+@app.get("/create habit")
+def createhabit():
+    return "create habit template"
+
 
 
 # Update Users Controller
