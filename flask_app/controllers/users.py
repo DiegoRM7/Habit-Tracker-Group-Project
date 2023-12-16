@@ -9,14 +9,24 @@ from flask_app.models import user # import entire file, rather than class, to av
 
 @app.get("/")
 def register():
-    return "register template"
+    return render_template("register.html")
 
+@app.post('/register/user')
+def create_user():
+    if user.User.create_user(request.form):
+        return redirect("/welcome")
+    return redirect("/")
 
 @app.get("/login")
 def login():
-    return "login template"
+    return render_template("login.html")
 
-
+@app.post("/login/user")
+def user_login():
+    if user.User.login(request.form):
+        return redirect("/welcome")
+    return redirect("/login")
+    
 @app.get("/welcome")
 def welcome():
     return "welcome template"
