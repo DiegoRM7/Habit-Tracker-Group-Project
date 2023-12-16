@@ -7,10 +7,6 @@ from flask_app.models import user # import entire file, rather than class, to av
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
-from flask import render_template
-from flask_app import app
-
-
 @app.get("/")
 def register():
     return "register template"
