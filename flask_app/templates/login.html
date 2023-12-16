@@ -12,7 +12,7 @@
 <body>
     <div class="container mx-auto my-auto px-5 pb-3 pt-3">
         <div class="row align-items-center mb-4">
-            <h1 class="col-6 text-start display-4 fw-bold text-success top-title">Racing Zone</h1>
+            <h1 class="col-6 text-start display-4 fw-bold text-success top-title">Habit Tracker</h1>
             <a href="/" class="col-6 text-end fw-bold top-title">Don't Have an Account? Register</a>
         </div>
         <div class="row justify-content-around">
@@ -21,7 +21,7 @@
                     <h1 class="col-12 text-success fw-semibold text-center mb-4">Login</h1>
                 </div>
                 <!--? flashes for no session in use, so return back to login page-->
-                <!-- {% with messages = get_flashed_messages(category_filter=["no_session"]) %}
+                {% with messages = get_flashed_messages(category_filter=["no_user_shown_in_DB"]) %}
                 {% if messages %}
                 <div class="p-2 my-3 rounded bg-danger-subtle bg-opacity-75 text-center fw-semibold flashes">
                     {% for message in messages %}
@@ -29,7 +29,7 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                {% endwith %} -->
+                {% endwith %}
                 
                 <!--? flashes for error on register inputs-->
                 <!-- {% with messages = get_flashed_messages(category_filter=["login"]) %}

@@ -27,9 +27,9 @@ def user_login():
         return redirect("/welcome")
     return redirect("/login")
     
-@app.get("/welcome")
-def welcome():
-    return "welcome template"
+@app.get("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 
 @app.get("/habit details")
