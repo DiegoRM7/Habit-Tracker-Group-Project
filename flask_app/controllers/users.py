@@ -37,7 +37,7 @@ def habitdetails():
     return "habit details template"
 
 
-@app.get("/update")
+@app.get("/habit/create/update")
 def update():
     return "update template"
 
@@ -47,9 +47,9 @@ def accountdetails():
     return "account details template"
 
 
-@app.get("/create habit")
-def createhabit():
-    return "create habit template"
+@app.get("/habit/create")
+def create_habit_page():
+    return render_template("create_habit.html")
 
 
 

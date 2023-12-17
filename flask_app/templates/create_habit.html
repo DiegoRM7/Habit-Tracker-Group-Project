@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Habit Tracker: Create Habit</title>
+</head>
+<body>
+    <div class="container mx-auto my-auto px-5 pb-3 pt-3">
+        <nav class="nav-bar row align-items-center mb-4">
+            <h1 class="col-6 text-start fw-bold top-title">Create Habit!</h1>
+            <div class="col-6 nav-pills d-md-inline-flex justify-content-end">
+                <a href="/dashboard" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Dashboard</a>
+                <a href="/habit/create" class="btn btn-outline-dark rounded-0 hover-shadow bg-primary-subtle active text-black fw-bold px-3">Create Habit</a>
+                <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
+            </div>
+        </nav>
+        <form class="text-black" action="/listing/create/process" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
+                        <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" href="#">Gym</a>
+                        <!-- <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                        <div class="mt-3 input-group fw-semibold">
+                            <label for="price">Price: </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" id="price" type="number" name="price">
+                        </div>
+                        <div class="mt-3 input-group fw-semibold">
+                            <label for="title">Title: </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="title" id="title">
+                        </div>
+                        <div class="mt-3 form-input-inline fw-semibold">
+                            <label for="description">Description: </label>
+                            <textarea class="form-control hover-shadow rounded-2 border-black mt-2" rows="3" name="description" id="description"></textarea>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
+                        <div class="text-center justify-content-center row">
+                            <!-- ? boiler plate code if no image is selected for later on for the user profile -->
+                            <!-- {% with messages = get_flashed_messages(category_filter=["create_car_listing(no_image)"]) %}
+                            {% if messages %}
+                            <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
+                                <p class="pt-1 text-danger-emphasis">{{ messages[0] }}</p>
+                            </div>
+                            {% endif %}
+                            {% endwith %} -->
+                            <!-- ? validation if the user tries to create a listing that includes an image file name with bad syntax format -->
+                            <!-- {% with messages = get_flashed_messages(category_filter=["correct_file_name"]) %}
+                            {% if messages %}
+                            <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
+                                <p class="pt-1 text-danger-emphasis">{{ messages[0] }}</p>
+                            </div>
+                            {% endif %}
+                            {% endwith %} -->
+                            <!-- ?? image code -->
+                            <!-- <img src="https://cdn-icons-png.flaticon.com/128/3085/3085411.png" alt="car image placeholder" id="selectedImage" class="w-75 mt-3 input-image">
+                            <div class="mt-3 fw-bold btn btn-primary rounded bg-gradient w-auto px-2 bg-primary hover-shadow">
+                                <label class="form-label text-white m-1" for="image_file">Choose File</label>
+                                <input class="d-none" type="file" id="image_file" name="image_file" value="..." onchange="displaySelectedImage(event, 'selectedImage'), myChangeFunction(event, this)">
+                                <input type="hidden" id="image_path" name="image_path" value="...">
+                            </div> -->
+                            <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" href="#">Sleep</a>
+                            <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-75" type="submit" value="Create"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
+                        <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" href="#">Steps</a>
+
+                        <!-- {% with messages = get_flashed_messages(category_filter=["create_car_listing(car_details)"]) %}
+                        {% if messages %}
+                        <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
+                            {% for message in messages %}
+                            <p class="pt-1 text-danger-emphasis">{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endwith %} -->
+
+                        <!-- ?? all the input fields, need to edit still -->
+                        <!-- <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
+                            <label class="col-6 text-start" for="year">Year: </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" id="year" type="number" name="year">
+                        </div>
+                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
+                            <label class="col-6 text-start" for="make">Make: </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="make" id="make">
+                        </div>
+                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
+                            <label class="col-6 text-start" for="model">Model: </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="model" id="model">
+                        </div>
+                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
+                            <label class="col-6 text-start" for="transmission">Transmission: </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="transmission" id="transmission">
+                        </div>
+                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
+                            <label class="col-6 text-start" for="horsepower">Horsepower: </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="horsepower" id="horsepower">
+                        </div>
+                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
+                            <label class="col-6 text-start" for="weight">Weight (lbs): </label>
+                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="weight" id="weight">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
