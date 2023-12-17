@@ -14,13 +14,13 @@
         <nav class="nav-bar row mb-4">
             <div class="col-12 d-md-inline-flex justify-content-end">
                 <a href="/dashboard" class="btn btn-outline-dark rounded-0 hover-shadow bg-primary-subtle text-black fw-bold px-3">Dashboard</a>
-                <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Create Habit</a>
+                <a href="/habit/create" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Create Habit</a>
                 <!-- ?? need to create logout route, going to make this into a dropdown to contain both -->
                 <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
                 <a href="/logout" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Logout</a>
             </div>
             <!-- ?? need to add a session of signed in username once they sign in -->
-            <h1 class="col-6 text-start fw-bold top-title">Welcome {{session['signed_in_user_name']}} !</h1>
+            <h1 class="col-6 text-start fw-bold top-title">Welcome {{session['first_name']}} !</h1>
             <p class="text-success-emphasis fw-bolder top-title">Current Rank #44</p>
         </nav>
         <div class="row flex-md-wrap">
