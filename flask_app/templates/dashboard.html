@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Habit Tracker: Dashboard</title>
+</head>
+<body>
+    <div class="container mx-auto my-auto px-5 pb-3 pt-3">
+        <nav class="nav-bar row mb-4">
+            <div class="col-12 d-md-inline-flex justify-content-end">
+                <a href="/dashboard" class="btn btn-outline-dark rounded-0 hover-shadow bg-primary-subtle text-black fw-bold px-3">Dashboard</a>
+                <a href="/habit/create" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Create Habit</a>
+                <!-- ?? need to create logout route, going to make this into a dropdown to contain both -->
+                <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
+                <a href="/logout" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Logout</a>
+            </div>
+            <!-- ?? need to add a session of signed in username once they sign in -->
+            <h1 class="col-6 text-start fw-bold top-title">Welcome {{session['first_name']}} !</h1>
+            <p class="text-success-emphasis fw-bolder top-title">Current Rank #44</p>
+        </nav>
+        <div class="row flex-md-wrap">
+            <div class="col-md-12">
+                <div class="p-3 mb-3 card bg-opacity-75 bg-light hover-shadow border-1 border-dark-subtle border">Filling Text</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- testing a push/pull-request to remote repo main -->
