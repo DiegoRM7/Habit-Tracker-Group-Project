@@ -14,7 +14,7 @@ def register():
 @app.post('/register/user')
 def create_user():
     if user.User.create_user(request.form):
-        return redirect("/welcome")
+        return redirect("/dashboard")
     return redirect("/")
 
 @app.get("/login")
@@ -24,7 +24,7 @@ def login():
 @app.post("/login/user")
 def user_login():
     if user.User.login(request.form):
-        return redirect("/welcome")
+        return redirect("/dashboard")
     return redirect("/login")
     
 @app.get("/dashboard")
