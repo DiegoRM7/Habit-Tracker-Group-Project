@@ -19,10 +19,9 @@ class Sleep:
         self.sleep_stop = data['sleep_stop']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.user_id['user_id']
-        self.sleep_user = None
+        self.user_id['user_id'] # user that's tracking their sleep
 
-    # Create Sleeps Models
+    # ?? Create Sleeps Models
     @classmethod
     def create_sleep_habit(cls,sleep_data):
         query = """
@@ -34,13 +33,13 @@ class Sleep:
         print(query)
         return sleep_id
 
-    # Read Sleep Models
+    # ?? Read Sleep Models
     @classmethod 
     def get_all_sleep_habits(cls):
         query = """
                 SELECT * 
-                FROM sleep
-                ;"""
+                FROM sleep;
+                """
         results = connectToMySQL(cls.db).query_db(query)
         sleep_habit = []
         for a_sleep_habit in results:
@@ -54,17 +53,18 @@ class Sleep:
                 JOIN user
                 ON user.id = sleep.user_id
                 WHERE gym.user_id = %(user_id)s;
-                ;"""
-        results = connectToMySQL(cls.db).query_db(query,user_id)
+                """
+        # small edit on the naming of the user_id since it's only bringing in one dictionary type.
+        results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
         return results
 # ! Uriah: works in mySQL, need to test in flask ^
 
         
-    # Update Sleep Models
+    # ?? Update Sleep Models
     
-    # Delete Sleep Models
+    # ?? Delete Sleep Models
         
-    # Sleep Validation
+    # ?? Sleep Validation
     @staticmethod
     def validate_user_sleep_habits(data):
         pass

@@ -1,6 +1,6 @@
 from flask_app import app
 from flask_app.controllers import (
-    users, gym_habits, sleep_habits, step_habits
+    gyms, sleeps, steps, users
 )  # controllers go here, if you add a new controller file you have to also add it here
 
 # This is where Flask's thought process starts. The request enters here, then goes to the controller above which has a matching route.
