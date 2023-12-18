@@ -31,6 +31,7 @@ def create_gym_habit_form_process():
     if 'user_id' not in session:
         return redirect('/')
     if gym.Gym.create_gym_habit(request.form):
+        print("\ngym habit got created successfully\n")
         return redirect("/habit/details")
     return redirect("/habit/create")
 
