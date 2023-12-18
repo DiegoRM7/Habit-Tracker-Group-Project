@@ -19,27 +19,37 @@
                 <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
             </div>
         </nav>
-        <form class="text-black" action="/listing/create/process" method="post" enctype="multipart/form-data">
+        <!-- <form class="text-black" action="/listing/create/process" method="post" enctype="multipart/form-data"> -->
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 flex-column d-flex align-items-center">
                     <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
-                        <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" href="#">Gym</a>
-                        <!-- <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
-                        <div class="mt-3 input-group fw-semibold">
-                            <label for="price">Price: </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" id="price" type="number" name="price">
-                        </div>
-                        <div class="mt-3 input-group fw-semibold">
-                            <label for="title">Title: </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="title" id="title">
-                        </div>
-                        <div class="mt-3 form-input-inline fw-semibold">
-                            <label for="description">Description: </label>
-                            <textarea class="form-control hover-shadow rounded-2 border-black mt-2" rows="3" name="description" id="description"></textarea>
-                        </div> -->
+                        <button class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" onclick="displayForm()">Gym</button>
+                        <!-- todo: here is where i've added the FORM ACTION ROUTE for gym habit inputs-->
+                        <form class="text-black" action="/habit/create/gym/process" method="post" enctype="multipart/form-data">
+                            <!-- this will only show once the button "gym" is clicked/ toggled -->
+                            <div id="inputContainer" class="d-none">
+                                <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                                <div class="mt-3 input-group fw-semibold">
+                                    <label for="reps">Reps: </label>
+                                    <input class="form-control hover-shadow rounded-2 ms-2 border-black" id="reps" type="number" name="reps">
+                                </div>
+                                <div class="mt-3 input-group fw-semibold">
+                                    <label for="hours">Hours: </label>
+                                    <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="hours" id="hours">
+                                </div>
+                                <div class="mt-3 form-input-inline fw-semibold">
+                                    <label for="gym_start">Time started Gym session: </label>
+                                    <textarea class="form-control hover-shadow rounded-2 border-black mt-2" rows="3" name="gym_start" id="gym_start"></textarea>
+                                </div>
+                                <div class="mt-3 form-input-inline fw-semibold">
+                                    <label for="gym_end">Time ended Gym session: </label>
+                                    <textarea class="form-control hover-shadow rounded-2 border-black mt-2" rows="3" name="gym_end" id="gym_end"></textarea>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 flex-column d-flex align-items-center">
                     <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
                         <div class="text-center justify-content-center row">
                             <!-- ? boiler plate code if no image is selected for later on for the user profile -->
@@ -65,12 +75,12 @@
                                 <input class="d-none" type="file" id="image_file" name="image_file" value="..." onchange="displaySelectedImage(event, 'selectedImage'), myChangeFunction(event, this)">
                                 <input type="hidden" id="image_path" name="image_path" value="...">
                             </div> -->
-                            <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" href="#">Sleep</a>
+                            <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" href="#">Sleep</a>
                             <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-75" type="submit" value="Create"></input>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 flex-column d-flex align-items-center">
                     <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
                         <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" href="#">Steps</a>
 
@@ -112,7 +122,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
 </body>
 </html>
