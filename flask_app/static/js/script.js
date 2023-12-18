@@ -21,3 +21,8 @@ function myChangeFunction(event, image_file) {
     imagePath.value = text;
     console.log(imagePath.value);
 }
+
+function displayForm() {
+    var inputs = document.getElementById("inputContainer");
+    inputs.className = "row";
+}
