@@ -21,9 +21,9 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.gym = []
-        self.sleep = []
-        self.step = []
+        self.gym = []   # holds all the gym habit tracked sessions for this user
+        self.sleep = []  # sleep habit tracked sessions
+        self.step = []  # step habit tracked sessions
 
     # Create Users Models
     @classmethod

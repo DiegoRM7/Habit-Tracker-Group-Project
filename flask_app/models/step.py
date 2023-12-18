@@ -52,9 +52,9 @@ class Step:
                 SELECT * FROM steps
                 JOIN user
                 ON user.id = step.user_id
-                WHERE step.user_id = %(user_id)
-                ;"""
-        results = connectToMySQL(cls.db).query_db(query,user_id)
+                WHERE step.user_id = %(user_id);
+                """
+        results = connectToMySQL(cls.db).query_db(query,{"user_id": user_id})
         return results
     
     # Update Step Models

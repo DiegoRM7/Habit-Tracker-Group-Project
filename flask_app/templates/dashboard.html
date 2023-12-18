@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
     <title>Habit Tracker: Dashboard</title>
 </head>
 <body>
@@ -23,12 +24,84 @@
             <h1 class="col-6 text-start fw-bold top-title">Welcome {{session['first_name']}} !</h1>
             <p class="text-success-emphasis fw-bolder top-title">Current Rank #44</p>
         </nav>
-        <div class="row flex-md-wrap">
-            <div class="col-md-12">
-                <div class="p-3 mb-3 card bg-opacity-75 bg-light hover-shadow border-1 border-dark-subtle border">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur voluptas in soluta doloremque adipisci expedita dicta dolores 
-                    itaque repellendus eligendi, non incidunt! Nihil a maiores eos iure corrupti sint doloribus!
+        <div class="container">
+            <div class="p-4 mb-3 card bg-opacity-75 bg-light hover-shadow border-1 border-dark-subtle border">
+                <div class="row">
+                    <div class="col-4 bg-primary p-2">
+                        HERE WE ARE GOING TO GET THE MOST RECENT TRACKED HABITS FOR EACH HABIT
+                        <h4>GYM</h4>
+                        <table class="table table-striped table-dark text-center">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Reps</th>
+                                    <th>Hours</th>
+                                    <th>Start session</th>
+                                    <th>Stop session</th>
+                                    <!-- <th>created at</th> -->
+                                    <!-- <th>updated at</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- will create a jinja2 for loop to find all available data -->
+                                <tr>
+                                    <th>1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-4 bg-success p-2">
+                        HERE WE ARE GOING TO GET THE MOST RECENT TRACKED HABITS FOR EACH HABIT
+                        <h4>SLEEP</h4>
+                        <table class="table table-striped table-dark text-center">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Hours</th>
+                                    <th>Quality</th>
+                                    <th>Sleep start</th>
+                                    <th>Sleep stop</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- will create a jinja2 for loop to find all available data -->
+                                <tr>
+                                    <th>1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-4 bg-light p-2">
+                        HERE WE ARE GOING TO GET THE MOST RECENT TRACKED HABITS FOR EACH HABIT
+                        <h4>STEPS</h4>
+                        <table class="table table-striped table-dark text-center">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First</th>
+                                    <th>Last</th>
+                                    <th>Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- will create a jinja2 for loop to find all available data -->
+                                <tr>
+                                    <th>1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

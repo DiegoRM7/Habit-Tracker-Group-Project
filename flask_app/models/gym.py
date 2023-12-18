@@ -18,11 +18,10 @@ class Gym:
         self.gym_stop = data['gym_stop']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.user_id = data['user_id']
-   
-   
-    # Create gym Models
-   
+        self.user_id = data['user_id'] # user that's tracking their gym session
+    
+    # ?? Create gym Models
+    
     @classmethod
     def create_gym_habit(cls,gym_data):
         query = """
@@ -34,7 +33,7 @@ class Gym:
         print(query)
         return gym_id
 
-    # Read gym Models
+    # ?? Read gym Models
     
     @classmethod
     def get_all_gym_habits(cls):
@@ -55,15 +54,16 @@ class Gym:
                 JOIN user 
                 ON user.id = gym.user_id 
                 WHERE gym.user_id = %(user_id)s;
-                ;"""
-        results = connectToMySQL(cls.db).query_db(query, user_id)
+                """
+        # small edit on the naming of the user_id since it's only bringing in one dictionary type
+        results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
         return results
 # ! Uriah: works in mySQL, need to test in flask ^
     # Update gym Models
     
     # Delete gym Models
-        
-    #Gym Validation
+    
+    # ?? Gym Validation
 
     @staticmethod
     def validate_user_gym_habits(data):
