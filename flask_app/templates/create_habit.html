@@ -19,39 +19,56 @@
                 <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
             </div>
         </nav>
-        <!-- <form class="text-black" action="/listing/create/process" method="post" enctype="multipart/form-data"> -->
             <div class="row">
+                <h1 class="text-center top-title fade-in-start-page fw-bold pb-5">Click the habit to track below</h1>
                 <div class="col-md-4 flex-column d-flex align-items-center">
-                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
-                        <button class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" onclick="displayForm()">Gym</button>
-                        <!-- todo: here is where i've added the FORM ACTION ROUTE for gym habit inputs-->
-                        <form class="text-black" action="/habit/create/gym/process" method="post" enctype="multipart/form-data">
-                            <!-- this will only show once the button "gym" is clicked/ toggled -->
-                            <div id="inputContainer" class="d-none">
-                                <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
-                                <div class="mt-3 input-group fw-semibold">
-                                    <label for="reps">Reps: </label>
-                                    <input class="form-control hover-shadow rounded-2 ms-2 border-black" id="reps" type="number" name="reps">
-                                </div>
-                                <div class="mt-3 input-group fw-semibold">
-                                    <label for="hours">Hours: </label>
-                                    <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="hours" id="hours">
-                                </div>
-                                <div class="mt-3 form-input-inline fw-semibold">
-                                    <label for="gym_start">Time started Gym session: </label>
-                                    <textarea class="form-control hover-shadow rounded-2 border-black mt-2" rows="3" name="gym_start" id="gym_start"></textarea>
-                                </div>
-                                <div class="mt-3 form-input-inline fw-semibold">
-                                    <label for="gym_end">Time ended Gym session: </label>
-                                    <textarea class="form-control hover-shadow rounded-2 border-black mt-2" rows="3" name="gym_end" id="gym_end"></textarea>
-                                </div>
+                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
+                        <div class="text-center justify-content-center row p-3">
+                            <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerGym')">Gym</button>
+                            
+                            <!-- ?? validate empty inputs for creating a GYM habit -->
+                            <!-- {% with messages = get_flashed_messages(category_filter=["creating_gym_habit"]) %}
+                            {% if messages %}
+                            <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
+                                {% for message in messages %}
+                                <p class="pt-1 text-danger-emphasis">{{ message }}</p>
+                                {% endfor %}
                             </div>
-                        </form>
+                            {% endif %}
+                            {% endwith %} -->
+                            
+                            <!-- todo: here is where i've added the FORM ACTION ROUTE for GYM habit inputs-->
+                            <form class="text-black" action="/habit/create/gym/process" method="post" enctype="multipart/form-data">
+                                <!-- this will only show once the button "gym" is clicked/ toggled -->
+                                <!-- still have to edit input names, copies from first one "gym" -->
+                                <div id="inputContainerGym" class="d-none">
+                                    <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                                    <div class="mt-3 input-group fw-semibold">
+                                        <label for="reps">Reps: </label>
+                                        <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="reps" id="reps">
+                                    </div>
+                                    <div class="mt-3 input-group fw-semibold">
+                                        <label for="hours">Hours: </label>
+                                        <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="hours" id="hours">
+                                    </div>
+                                    <div class="mt-3 form-input-inline fw-semibold">
+                                        <label for="gym_start">Time started Gym session: </label>
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="gym_start" id="gym_start"></input>
+                                    </div>
+                                    <div class="mt-3 form-input-inline fw-semibold">
+                                        <label for="gym_end">Time ended Gym session: </label>
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="gym_end" id="gym_end"></input>
+                                    </div>
+                                    <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-50" type="submit" value="Create"></input>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 flex-column d-flex align-items-center">
-                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
-                        <div class="text-center justify-content-center row">
+                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
+                        <div class="text-center justify-content-center row p-3">
+
                             <!-- ? boiler plate code if no image is selected for later on for the user profile -->
                             <!-- {% with messages = get_flashed_messages(category_filter=["create_car_listing(no_image)"]) %}
                             {% if messages %}
@@ -68,57 +85,89 @@
                             </div>
                             {% endif %}
                             {% endwith %} -->
-                            <!-- ?? image code -->
+                            <!-- ?? image code boilerplate for later -->
                             <!-- <img src="https://cdn-icons-png.flaticon.com/128/3085/3085411.png" alt="car image placeholder" id="selectedImage" class="w-75 mt-3 input-image">
                             <div class="mt-3 fw-bold btn btn-primary rounded bg-gradient w-auto px-2 bg-primary hover-shadow">
                                 <label class="form-label text-white m-1" for="image_file">Choose File</label>
                                 <input class="d-none" type="file" id="image_file" name="image_file" value="..." onchange="displaySelectedImage(event, 'selectedImage'), myChangeFunction(event, this)">
                                 <input type="hidden" id="image_path" name="image_path" value="...">
                             </div> -->
-                            <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" href="#">Sleep</a>
-                            <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-75" type="submit" value="Create"></input>
+
+                            <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerSleep')">Sleep</button>
+
+                            <!-- ?? validate empty inputs for creating a SLEEP habit -->
+                            <!-- {% with messages = get_flashed_messages(category_filter=["creating_sleep_habit"]) %}
+                            {% if messages %}
+                            <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
+                                {% for message in messages %}
+                                <p class="pt-1 text-danger-emphasis">{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {% endwith %} -->
+
+                            <!-- todo: here is where i've added the FORM ACTION ROUTE for SLEEP habit inputs-->
+                            <!-- still have to edit input names, copies from first one "gym" -->
+                            <form class="text-black" action="/habit/create/sleep/process" method="post" enctype="multipart/form-data">
+                                <!-- this will only show once the button "sleep" is clicked/ toggled -->
+                                <div id="inputContainerSleep" class="d-none">
+                                    <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                                    <div class="mt-3 input-group fw-semibold">
+                                        <label for="quality">Quality: </label>
+                                        <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="quality" id="quality" placeholder="1 - 5 rating, 5 = best">
+                                    </div>
+                                    <div class="mt-3 input-group fw-semibold">
+                                        <label for="hours">Hours: </label>
+                                        <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="hours" id="hours">
+                                    </div>
+                                    <div class="mt-3 form-input-inline fw-semibold">
+                                        <label for="sleep_start">Time started sleeping: </label>
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="sleep_start" id="sleep_start"></input>
+                                    </div>
+                                    <div class="mt-3 form-input-inline fw-semibold">
+                                        <label for="sleep_stop">Time stopped sleeping: </label>
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="sleep_stop" id="sleep_stop"></input>
+                                    </div>
+                                    <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-50" type="submit" value="Create"></input>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 flex-column d-flex align-items-center">
-                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow">
-                        <a class="mt-2 px-5 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow" href="#">Steps</a>
+                    <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
+                        <div class="text-center justify-content-center row p-3">
+                            <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerSteps')">Steps</button>
 
-                        <!-- {% with messages = get_flashed_messages(category_filter=["create_car_listing(car_details)"]) %}
-                        {% if messages %}
-                        <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
-                            {% for message in messages %}
-                            <p class="pt-1 text-danger-emphasis">{{ message }}</p>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                        {% endwith %} -->
+                            <!-- ?? validate empty inputs for creating a STEPS habit -->
+                            <!-- {% with messages = get_flashed_messages(category_filter=["creating_steps_habit"]) %}
+                            {% if messages %}
+                            <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
+                                {% for message in messages %}
+                                <p class="pt-1 text-danger-emphasis">{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {% endwith %} -->
 
-                        <!-- ?? all the input fields, need to edit still -->
-                        <!-- <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
-                            <label class="col-6 text-start" for="year">Year: </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" id="year" type="number" name="year">
+                            <!-- todo: here is where i've added the FORM ACTION ROUTE for STEPS habit inputs-->
+                            <!-- still have to edit input names, copies from first one "gym" -->
+                            <form class="text-black" action="/habit/create/steps/process" method="post" enctype="multipart/form-data">
+                                <!-- this will only show once the button "steps" is clicked/ toggled -->
+                                <div id="inputContainerSteps" class="d-none">
+                                    <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                                    <div class="mt-3 input-group fw-semibold">
+                                        <label for="amount">Amount: </label>
+                                        <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="amount" id="amount">
+                                    </div>
+                                    <div class="mt-3 input-group fw-semibold">
+                                        <label for="location">Location: </label>
+                                        <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="location" id="location" placeholder="Format as [City, St]">
+                                    </div>
+                                    <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-50" type="submit" value="Create"></input>
+                                </div>
+                            </form>
                         </div>
-                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
-                            <label class="col-6 text-start" for="make">Make: </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="make" id="make">
-                        </div>
-                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
-                            <label class="col-6 text-start" for="model">Model: </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="model" id="model">
-                        </div>
-                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
-                            <label class="col-6 text-start" for="transmission">Transmission: </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="text" name="transmission" id="transmission">
-                        </div>
-                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
-                            <label class="col-6 text-start" for="horsepower">Horsepower: </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="horsepower" id="horsepower">
-                        </div>
-                        <div class=" input-group-text border-0 bg-transparent text-dark fw-semibold">
-                            <label class="col-6 text-start" for="weight">Weight (lbs): </label>
-                            <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="weight" id="weight">
-                        </div> -->
                     </div>
                 </div>
             </div>

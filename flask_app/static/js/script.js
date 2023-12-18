@@ -1,3 +1,4 @@
+// functions to display images and change value of inputs that will go to DB as the image_filename
 function displaySelectedImage(event, elementId) {
     const selectedImage = document.getElementById(elementId);
     const fileInput = event.target;
@@ -21,8 +22,8 @@ function myChangeFunction(event, image_file) {
     imagePath.value = text;
     console.log(imagePath.value);
 }
-
-function displayForm() {
-    var inputs = document.getElementById("inputContainer");
-    inputs.className = "row";
+// shows form when button clicked
+function displayForm(inputContainerForHabitName) {
+    var inputs = document.getElementById(inputContainerForHabitName);
+    inputs.className = "row fade-in-text justify-content-center";
 }
