@@ -22,6 +22,7 @@ function myChangeFunction(event, image_file) {
     imagePath.value = text;
     console.log(imagePath.value);
 }
+
 // shows form when button clicked
 function displayForm(inputContainerForHabitName) {
     var inputs = document.getElementById(inputContainerForHabitName);
