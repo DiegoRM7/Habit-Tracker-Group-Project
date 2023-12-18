@@ -8,6 +8,7 @@ body {
     text-shadow: 2px 2px 5px #777777;
 }
 
+/* ?? styling for images uploaded / saved */
 .input-image {
     width: 300px;
     height: 200px;
@@ -24,6 +25,7 @@ body {
     height: 450px;
 }
 
+/* ?? hover for shadows */
 .hover-opacity:hover {
     opacity: 0.7;
 }
@@ -35,25 +37,28 @@ body {
 /* ?? Fade in texts animations */
 
 .fade-in-start-page {
-    animation: fadeIn 3s;
+    animation: fadeIn 2s;
+    position: relative;
 }
 .fade-in-start-page-2nd {
     animation: fadeIn 1s;
+    position: relative;
 }
 
 /* ?? Fade in animation for the form's (on the create page) */
 
 .fade-in-text {
-    -ms-animation: fadeIn 1.5s;
-    -webkit-animation: fadeIn 1.5s;
-    -moz-animation: fadeIn 1.5s;
-    -o-animation: fadeIn 1.5s;
-    animation: fadeIn 1.5s;
+    -ms-animation: fadeIn 1s ease;
+    -webkit-animation: fadeIn 1s ease;
+    -moz-animation: fadeIn 1s ease;
+    -o-animation: fadeIn 1s ease;
+    animation: fadeIn 1s ease;
+    position: relative;
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    from { opacity: 0; left: -50px }
+    to { opacity: 1; left: 0px}
 }
 
 @-moz-keyframes fadeIn {
@@ -74,4 +79,14 @@ body {
 @-ms-keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+/* ?? offset when hover: testing */
+.offset-hover:hover {
+    offset-position: top 25% right 75%;
+}
+
+/* ?? selected link that's active will have a shadow automatically and color bg */
+a:active {
+    background-color: skyblue;
 }
