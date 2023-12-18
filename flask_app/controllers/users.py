@@ -26,26 +26,27 @@ def user_login():
     if user.User.login(request.form):
         return redirect("/dashboard")
     return redirect("/login")
-    
+
+# Update Users Controller (update users account info = password, username, location, email, first/last name's)
+# Delete Users Controller (delete account button)
+
+# todo: these habit routes need to be put into a separate habit controller
+
 @app.get("/dashboard")
 def dashboard():
     return render_template("dashboard.html")
-
 
 @app.get("/habit details")
 def habitdetails():
     return "habit details template"
 
-
-@app.get("/habit/create/update")
-def update():
-    return "update template"
-
+@app.get("/habit/update")
+def update_habit_page():
+    return render_template("update_habit.html")
 
 @app.get("/account details")
 def accountdetails():
     return "account details template"
-
 
 @app.get("/habit/create")
 def create_habit_page():
@@ -53,11 +54,9 @@ def create_habit_page():
 
 
 
-# Update Users Controller
 
 
 
-# Delete Users Controller
 
 
 # Notes:
