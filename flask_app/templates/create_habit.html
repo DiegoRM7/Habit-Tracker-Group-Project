@@ -42,7 +42,7 @@
                                 <!-- this will only show once the button "gym" is clicked/ toggled -->
                                 <!-- still have to edit input names, copies from first one "gym" -->
                                 <div id="inputContainerGym" class="d-none">
-                                    <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                                    <input type="hidden" name="user_id" value="{{ session["user_id"] }}">
                                     <div class="mt-3 input-group fw-semibold">
                                         <label for="reps">Reps: </label>
                                         <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="reps" id="reps">
@@ -53,11 +53,11 @@
                                     </div>
                                     <div class="mt-3 form-input-inline fw-semibold">
                                         <label for="gym_start">Time started Gym session: </label>
-                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="gym_start" id="gym_start">
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="datetime" name="gym_start" id="gym_start">
                                     </div>
                                     <div class="mt-3 form-input-inline fw-semibold">
                                         <label for="gym_end">Time ended Gym session: </label>
-                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="gym_end" id="gym_end">
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="datetime" name="gym_stop" id="gym_end">
                                     </div>
                                     <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-50" type="submit" value="Create">
                                 </div>
@@ -111,7 +111,7 @@
                             <form class="text-black" action="/habit/create/sleep/process" method="post" enctype="multipart/form-data">
                                 <!-- this will only show once the button "sleep" is clicked/ toggled -->
                                 <div id="inputContainerSleep" class="d-none">
-                                    <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                                    <input type="hidden" name="user_id" value="{{ session["user_id"] }}">
                                     <div class="mt-3 input-group fw-semibold">
                                         <label for="quality">Quality: </label>
                                         <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="quality" id="quality" placeholder="1 - 5 rating, 5 = best">
@@ -122,11 +122,11 @@
                                     </div>
                                     <div class="mt-3 form-input-inline fw-semibold">
                                         <label for="sleep_start">Time started sleeping: </label>
-                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="sleep_start" id="sleep_start">
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="datetime" name="sleep_start" id="sleep_start">
                                     </div>
                                     <div class="mt-3 form-input-inline fw-semibold">
                                         <label for="sleep_stop">Time stopped sleeping: </label>
-                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="time" name="sleep_stop" id="sleep_stop">
+                                        <input class="form-control hover-shadow rounded-2 border-black ms-2" type="datetime" name="sleep_stop" id="sleep_stop">
                                     </div>
                                     <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-50" type="submit" value="Create">
                                 </div>
@@ -155,7 +155,7 @@
                             <form class="text-black" action="/habit/create/steps/process" method="post" enctype="multipart/form-data">
                                 <!-- this will only show once the button "steps" is clicked/ toggled -->
                                 <div id="inputContainerSteps" class="d-none">
-                                    <input type="hidden" name="user_id" value="{{ session["int_registered_user"] }}">
+                                    <input type="hidden" name="user_id" value="{{ session["user_id"] }}">
                                     <div class="mt-3 input-group fw-semibold">
                                         <label for="amount">Amount: </label>
                                         <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="amount" id="amount">

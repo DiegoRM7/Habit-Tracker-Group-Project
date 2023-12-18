@@ -1,34 +1,41 @@
-
-""""this file is going to be the users controllers file"""
+""""this file is going to be the gym controllers file"""
 """all routes and controllers have been added in its entirely"""
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import user # import entire file, rather than class, to avoid circular imports
+from flask_app.models import gym # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
-@app.get("/")
-def register():
-    return render_template("register.html")
+@app.get("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
-@app.post('/register/user')
-def create_user():
-    if user.User.create_user(request.form):
-        return redirect("/dashboard")
-    return redirect("/")
+@app.get("/habit/details")
+def habitdetails():
+    return "habit details template"
 
-@app.get("/login")
-def login():
-    return render_template("login.html")
+@app.get("/habit/update")
+def update_habit_page():
+    return render_template("update_habit.html")
 
-@app.post("/login/user")
-def user_login():
-    if user.User.login(request.form):
-        return redirect("/dashboard")
-    return redirect("/login")
+@app.get("/account/details")
+def accountdetails():
+    return "account details template"
 
-# Update Users Controller (update users account info = password, username, location, email, first/last name's)
-# Delete Users Controller (delete account button)
+@app.get("/habit/create")
+def create_habit_page():
+    return render_template("create_habit.html")
+
+@app.post("/habit/create/gym/process")
+def create_gym_habit_form_process():
+    if 'user_id' not in session:
+        return redirect('/')
+    if gym.Gym.create_gym_habit(request.form):
+        return redirect("/habit/details")
+    return redirect("/habit/create")
+
+
+
 
 
 
