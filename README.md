@@ -85,6 +85,7 @@
 ## MVP CHECKLIST:
     [ ] not done
     [x] done
+    [ ] create validation to make sure user cannot open a url link to any page unless they are signed in (have a session user_id)
 
 ## Product Backlog / Stretch Goal Features:
     * API’s:
