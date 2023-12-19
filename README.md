@@ -52,34 +52,34 @@
       * Username
       * Password (stretch goal)
       * That habits inputs: sleep
-          * Hours
-          * Quality
-          * Time went to sleep
-          * Wake up time
+       * Hours
+       * Quality
+       * Time went to sleep
+       * Wake up time
 
 ## CRUD implementation:
   * Using MySQL for implementations.
   * Data we are using to Create, Read, Update, Delete and for which tables: EXAMPLE:
       * Users:
-          * First name
-          * Last name
-          * Email
-          * Location
-          * Password
+       * First name
+       * Last name
+       * Email
+       * Location
+       * Password
       * Sleep
-          * Hours
-          * Quality  (1-5 star rating)
-          * Sleep_start (going to sleep)
-          * Sleep_stop (waking up)
+       * Hours
+       * Quality  (1-5 star rating)
+       * Sleep_start (going to sleep)
+       * Sleep_stop (waking up)
       * Steps
-          * Amount (# of steps tracked in session)
-          * Location (City, St)
+       * Amount (# of steps tracked in session)
+       * Location (City, St)
       * Gym
-          * Reps
-          * Hours in gym
-          * Workout time start (time)
-          * Workout end (time)
-          * Type Workout (chest, legs, etc)
+      * Reps
+       * Hours in gym
+       * Workout time start (time)
+       * Workout end (time)
+       * Type Workout (chest, legs, etc)
 
 ## MVP CHECKLIST:
 - [x] FE logout button & BE functionality for dashboard
@@ -109,4 +109,8 @@
   * Rewards(logging for a week, month etc)
   * History for each user each habit(Graph)(maybe use an API or library for this)
   * Update password
+  DiegoM
   * The create forms page still has input data even if validation flashes appear so the user doesn’t have to re-enter all their inputs again to create.
+  
+  * The create forms page still has input data even if validation flashes appear so the user doesn’t have to re-enter all their inputs again to create.
+  main

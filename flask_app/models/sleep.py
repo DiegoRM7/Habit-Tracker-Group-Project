@@ -32,7 +32,18 @@ class Sleep:
         print(sleep_id)
         return sleep_id
 
-    # ?? Read Sleep Models
+# ?? Read Sleep Models
+
+    @classmethod
+    def get_sleep_habit_by_habit_id(cls,sleep_id):
+        query = """
+                SELECT *
+                FROM sleep 
+                WHERE sleep_id = %(sleep_id)s
+                ;"""
+        results = connectToMySQL(cls.db).query_db(query, {"sleep_id" : sleep_id})
+        return cls(results)
+
     @classmethod 
     def get_all_sleep_habits(cls):    # for one table in the dashboard
         query = """
@@ -59,12 +70,35 @@ class Sleep:
         return cls(results)
 # ! Uriah: works in mySQL, need to test in flask ^
 
+# ?? Update Sleep Models
+    @classmethod
+    def update_sleep(cls, data):
+        # ! add validations when ready
+        # ! check logged in user for increased route security?
+        query = """
+                UPDATE sleep
+                SET
+                hours = %(hours)s,
+                quality = %(quality)s,
+                WHERE sleep_id = %(sleep_id)s;
+                """
+        return connectToMySQL(cls.db).query_db(query,data)
+        # ! will eventually return True for validation purposes
+
+#?? Delete Step Models
+    @classmethod
+    def delete_steps(cls,sleep_id):
+        # ! add validations when ready
+        # ! check logged in user for increased route security?
+        query = """
+                DELETE FROM sleep
+                WHERE sleep_id = %(sleep_id)s;
+                """
+        return connectToMySQL(cls.db).query_db(query, {'sleep_id' : sleep_id})
+        # ! will eventually return True for validation purposes
+
         
-    # ?? Update Sleep Models
-    
-    # ?? Delete Sleep Models
-        
-    # ?? Sleep Validation
+# ?? Sleep Validation
     @staticmethod
     def validate_user_sleep_habits(data):
         pass

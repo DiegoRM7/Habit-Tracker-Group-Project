@@ -57,6 +57,7 @@ class User:
             return this_user
         return False
     
+# <<<<<<< DiegoM
     @classmethod
     def get_user_by_user_id_logged_in(cls, user_id):
         query = """
@@ -68,13 +69,16 @@ class User:
         return result
     
     # Update Users Models
+# =======
+#?? Update Users Models
+# >>>>>>> main
 
 
-    # Delete Users Models
+#?? Delete Users Models
 
 
 
-    # user_login
+#?? user_login
 
     @classmethod
     def login(cls, data):
