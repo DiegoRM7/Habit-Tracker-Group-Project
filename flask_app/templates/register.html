@@ -13,16 +13,16 @@
     <div class="container mx-auto my-auto px-5 pb-3 pt-3">
         <div class="row align-items-center mb-4">
             <h1 class="col-6 text-start display-4 fw-bold text-success top-title">Habit Tracker</h1>
-            <a href="/login" class="col-6 text-end fw-bold top-title">Already Have an Account? Login</a>
+            <a href="/login" class="col-6 text-end fw-bold top-title bg-transparent">Already Have an Account? Login</a>
         </div>
         <div class="row justify-content-around">
             <div class="col-10 px-5 pb-3 bg-gradient bg-dark">
-                <div class="row mt-5 pt-3">
+                <div class="row mt-5 pt-3 text-center justify-content-center">
                     <h1 class="col-10 text-primary">Register</h1>
                 </div>
 
                 <!-- ? flashes for error on register inputs -->
-                <!-- {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                {% with messages = get_flashed_messages(category_filter=["register_validation"]) %}
                 {% if messages %}
                 <div class="p-3 my-3 rounded bg-danger-subtle bg-opacity-75 fw-semibold flashes">
                     {% for message in messages %}
@@ -30,9 +30,10 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                {% endwith %} -->
+                {% endwith %}
 
                 <!--? flash for account created success-->
+                <!-- ! probably wont need this because if account is successfully created then it redirects straight to dashboard page -->
                 <!-- {% with success = get_flashed_messages(category_filter=["acc_created"]) %}
                 {% if success %}
                 <div class="p-3 my-3 rounded bg-success-subtle bg-opacity-75 text-center fw-semibold flashes">
@@ -43,7 +44,7 @@
                 {% endif %}
                 {% endwith %} -->
 
-                <form class="text-white" action="/register/user" method="post">
+                <form class="text-white mt-3" action="/register/user" method="post">
                     <div class="row">
                         <div class="col-md-4 pb-2 pt-1 input-group-text border-0 bg-transparent fw-semibold">
                             <label class="text-start text-white" for="first_name">First Name:</label>
