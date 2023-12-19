@@ -15,7 +15,7 @@
 ### Project Name:
 
 ## Habit Tracker
-    * Competition based habit tracker. Users will choose between several different habit categories and in the future receive rewards based on the length of their tracking streaks.
+  * Competition based habit tracker. Users will choose between several different habit categories and in the future receive rewards based on the length of their tracking streaks.
 
 # MVP :
 ## Technology Stack:
