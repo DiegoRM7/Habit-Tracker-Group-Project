@@ -19,7 +19,7 @@ class Sleep:
         self.sleep_stop = data['sleep_stop']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.user_id['user_id'] # user that's tracking their sleep
+        self.user_id = data['user_id'] # user that's tracking their sleep
 
     # ?? Create Sleeps Models
     @classmethod
@@ -45,10 +45,11 @@ class Sleep:
         return cls(results)
 
     @classmethod 
-    def get_all_sleep_habits(cls):
+    def get_all_sleep_habits(cls):    # for one table in the dashboard
         query = """
                 SELECT * 
-                FROM sleep;
+                FROM sleep
+                ORDER BY created_at DESC;
                 """
         results = connectToMySQL(cls.db).query_db(query)
         sleep_habit = []
@@ -66,7 +67,7 @@ class Sleep:
                 """
         # small edit on the naming of the user_id since it's only bringing in one dictionary type.
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
-        return results
+        return cls(results)
 # ! Uriah: works in mySQL, need to test in flask ^
 
 # ?? Update Sleep Models

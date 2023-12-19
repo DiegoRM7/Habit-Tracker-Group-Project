@@ -46,19 +46,32 @@ class User:
 
     @classmethod
     def get_user_by_email(cls, email):
-        data = {'email' : email}
         query = """
                 SELECT *
                 FROM user
-                WHERE email = %(email)s
-                ;"""
-        result = connectToMySQL(cls.db).query_db(query, data)
+                WHERE email = %(email)s;
+                """
+        result = connectToMySQL(cls.db).query_db(query, {'email': email})
         if result:
             this_user = cls(result[0])
             return this_user
         return False
     
+# <<<<<<< DiegoM
+    @classmethod
+    def get_user_by_user_id_logged_in(cls, user_id):
+        query = """
+                SELECT *
+                FROM user
+                WHERE id = %(user_id)s;
+                """
+        result = connectToMySQL(cls.db).query_db(query, {'user_id': user_id})
+        return result
+    
+    # Update Users Models
+# =======
 #?? Update Users Models
+# >>>>>>> main
 
 
 #?? Delete Users Models

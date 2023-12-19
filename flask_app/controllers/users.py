@@ -3,7 +3,7 @@
 """all routes and controllers have been added in its entirely"""
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
-from flask_app.models import user # import entire file, rather than class, to avoid circular imports
+from flask_app.models import user, sleep # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
@@ -16,7 +16,7 @@ def create_user():
     if not user.User.validate_user_registration():
         return redirect("/")
     if user.User.create_user(request.form):
-        return redirect("/dashboard")
+        return redirect("/dashboard", sleep_data = sleep.Sleep.get_all_sleep_habits())
     print("There was an error creating a user for some reason")
     return redirect("/")
 
@@ -24,7 +24,10 @@ def create_user():
 def dashboard():
     if 'user_id' not in session:
         return redirect('/login')
-    return render_template("dashboard.html")
+    sleep_data = sleep.Sleep.get_all_sleep_habits()
+    user_info = user.User.get_user_by_user_id_logged_in('user_id')
+    print(sleep_data)
+    return render_template("dashboard.html", sleep_data = sleep_data, user_info = user_info)
 
 @app.get("/login")
 def login():

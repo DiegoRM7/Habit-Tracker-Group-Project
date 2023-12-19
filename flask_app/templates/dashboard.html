@@ -28,7 +28,15 @@
             <div class="p-4 mb-3 card bg-opacity-75 bg-light hover-shadow border-1 border-dark-subtle border">
                 <div class="row">
                     <div class="row bg-primary p-2">
-                        HERE WE ARE GOING TO GET THE MOST RECENT TRACKED HABITS FOR EACH HABIT
+                        {{ user_info["first_name"] }}
+                        {{ user_info["last_name"] }}
+                        {{ user_info["location"] }}
+
+                        {% for one_sleep in sleep_data %}
+                        <p>
+                            {{ one_sleep.created_at }}
+                        </p>
+                        {% endfor %}
                         <h4>GYM</h4>
                         <table class="table table-striped table-dark text-center">
                             <thead>

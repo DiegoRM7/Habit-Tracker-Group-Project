@@ -45,11 +45,12 @@ class Gym:
         return cls(results)
 
     @classmethod
-    def get_all_gym_habits(cls):
+    def get_all_gym_habits(cls):    # for one table in the dashboard
         query = """
                 SELECT *
                 FROM gym
-                ;"""
+                ORDER BY created_at DESC;
+                """
         results = connectToMySQL(cls.db).query_db(query)
         gym_habit = []
         for a_gym_habit in results:

@@ -2,15 +2,17 @@
 """all routes and controllers have been added in its entirely"""
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import gym # import entire file, rather than class, to avoid circular imports
+from flask_app.models import gym, user # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
 @app.get("/habit/details")
-def habitdetails():
+def habit_details():
     if 'user_id' not in session:
         return redirect('/')
-    return "habit details template"
+    user_info = user.User.get_user_by_user_id_logged_in('user_id')
+    print(user_info["first_name"])
+    return render_template("habit_details.html", user_info = user_info)
 
 @app.get("/habit/update")
 def update_habit_page():
@@ -36,7 +38,7 @@ def create_gym_habit_form_process():
         return redirect('/')
     if gym.Gym.create_gym_habit(request.form):
         print("\ngym habit got created successfully\n")
-        return redirect("/habit/details")
+        return redirect(f"/habit/details/{habit_id}")
     return redirect("/habit/create")
 
 
