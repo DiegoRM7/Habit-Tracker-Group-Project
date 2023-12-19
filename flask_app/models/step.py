@@ -12,11 +12,9 @@ bcrypt = Bcrypt(app)
 class Step:
     db = "habit_tracker_schema"
     def __init__(self, data):
-        self.id = data['gym_id']
-        self.first_name = data['reps']
-        self.last_name = data['hours']
-        self.email = data['gym_start']
-        self.password = data['gym_stop']
+        self.id = data['step_id']
+        self.first_name = data['amount']
+        self.last_name = data['location']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id['user_id']
@@ -57,10 +55,46 @@ class Step:
         results = connectToMySQL(cls.db).query_db(query,{"user_id": user_id})
         return results
     
+    @classmethod
+    def get_user_id_from_step_habit():
+        # ! Uriah: might keep this for increased route security....not sure
+        pass    
     # Update Step Models
+    @classmethod
+    def update_steps(cls, data):
+         # ! add validations when ready
+        # ! check logged in user for increased route security?
+        data = {
+           'id' : data['steps_id'],
+           'amount' : data['amount'],
+           'location' : data['location']
+        }
+        query = """
+            UPDATE steps
+            SET
+            amount = %(amount)s,
+            location = %(location)s
+            WHERE steps_id = %(steps_id)s
+            ;"""
+        connectToMySQL(cls.db).query_db(query,data)
+         # ! will eventually return True for validation purposes
+        return data
 
     # Delete Step Models
-
+    @classmethod
+    def delete_steps(cls,steps_id):
+        # ! add validations when ready
+        # ! check logged in user for increased route security?
+        data = {
+            'id' : steps_id
+        }
+        query = """
+                DELETE FROM steps
+                WHERE steps_id = %(id)s
+                ;"""
+        connectToMySQL(cls.db).query_db(query,data)
+        # ! will eventually return True for validation purposes
+        return data 
     # Step Validation
     @staticmethod
     def validate_step_habits(data):
