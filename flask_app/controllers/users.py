@@ -23,7 +23,7 @@ def create_user():
 @app.get("/dashboard")
 def dashboard():
     if 'user_id' not in session:
-        return redirect('/')
+        return redirect('/login')
     return render_template("dashboard.html")
 
 @app.get("/login")
