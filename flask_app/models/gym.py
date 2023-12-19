@@ -19,9 +19,9 @@ class Gym:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id = data['user_id'] # user that's tracking their gym session
-    
-    # ?? Create gym Models
-    
+
+# ?? Create gym Models
+
     @classmethod
     def create_gym_habit(cls,gym_data):
         query = """
@@ -33,8 +33,17 @@ class Gym:
         print(query)
         return gym_id
 
-    # ?? Read gym Models
-    
+# ?? Read gym Models
+    @classmethod
+    def get_gym_habits_by_habit_id(cls,gym_id):
+        query = """
+                SELECT *
+                FROM gym 
+                WHERE gym_id = %(gym_id)s
+                ;"""
+        results = connectToMySQL(cls.db).query_db(query, {"gym_id" : gym_id})
+        return cls(results)
+
     @classmethod
     def get_all_gym_habits(cls):
         query = """
@@ -46,7 +55,7 @@ class Gym:
         for a_gym_habit in results:
             gym_habit.append(cls(a_gym_habit))
         return gym_habit
-        
+
     @classmethod
     def get_all_gym_habits_with_user_by_user_id(cls, user_id):
         query = """
@@ -59,9 +68,35 @@ class Gym:
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
         return results
 # ! Uriah: works in mySQL, need to test in flask ^
-    # Update gym Models
-    
-    # Delete gym Models
+
+# ?? Update Sleep Models
+    @classmethod
+    def update_gym(cls, data):
+        # ! add validations when ready
+        # ! check logged in user for increased route security?
+        query = """
+                UPDATE gym
+                SET
+                reps = %(rep)s,
+                hours = %(hours)s,
+                gym_start = %(gym_start)s,
+                gym_stop = %(gym_stop)s,
+                WHERE gym_id = %(gym_id)s;
+                """
+        return connectToMySQL(cls.db).query_db(query,data)
+        # ! will eventually return True for validation purposes
+
+#?? Delete Step Models
+    @classmethod
+    def delete_steps(cls,sleep_id):
+        # ! add validations when ready
+        # ! check logged in user for increased route security?
+        query = """
+                DELETE FROM sleep
+                WHERE sleep_id = %(sleep_id)s;
+                """
+        return connectToMySQL(cls.db).query_db(query, {'sleep_id' : sleep_id})
+        # ! will eventually return True for validation purposes
     
     # ?? Gym Validation
 
