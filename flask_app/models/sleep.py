@@ -29,8 +29,7 @@ class Sleep:
                 VALUES (%(hours)s, %(quality)s, %(sleep_start)s, %(sleep_stop)s, %(user_id)s)
                 ;"""
         sleep_id = connectToMySQL(cls.db).query_db(query, sleep_data)
-        print("sleep_id:",sleep_id)
-        print(query)
+        print(sleep_id)
         return sleep_id
 
     # ?? Read Sleep Models

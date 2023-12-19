@@ -6,24 +6,28 @@ from flask_app.models import gym # import entire file, rather than class, to avo
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
-@app.get("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
-
 @app.get("/habit/details")
 def habitdetails():
+    if 'user_id' not in session:
+        return redirect('/')
     return "habit details template"
 
 @app.get("/habit/update")
 def update_habit_page():
+    if 'user_id' not in session:
+        return redirect('/')
     return render_template("update_habit.html")
 
 @app.get("/account/details")
 def accountdetails():
+    if 'user_id' not in session:
+        return redirect('/')
     return "account details template"
 
 @app.get("/habit/create")
 def create_habit_page():
+    if 'user_id' not in session:
+        return redirect('/')
     return render_template("create_habit.html")
 
 @app.post("/habit/create/gym/process")

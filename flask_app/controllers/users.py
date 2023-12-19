@@ -2,7 +2,7 @@
 """"this file is going to be the users controllers file"""
 """all routes and controllers have been added in its entirely"""
 from flask_app import app
-from flask import render_template, redirect, request, session
+from flask import render_template, redirect, request, session, flash
 from flask_app.models import user # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
@@ -13,9 +13,18 @@ def register():
 
 @app.post('/register/user')
 def create_user():
+    if not user.User.validate_user_registration():
+        return redirect("/")
     if user.User.create_user(request.form):
         return redirect("/dashboard")
+    print("There was an error creating a user for some reason")
     return redirect("/")
+
+@app.get("/dashboard")
+def dashboard():
+    if 'user_id' not in session:
+        return redirect('/')
+    return render_template("dashboard.html")
 
 @app.get("/login")
 def login():
@@ -27,6 +36,11 @@ def user_login():
         return redirect("/dashboard")
     return redirect("/login")
 
+@app.get("/logout")
+def logout():
+    session.clear()
+    flash("You've logged out successfully!","logout_account")
+    return redirect("/login")
 # Update Users Controller (update users account info = password, username, location, email, first/last name's)
 # Delete Users Controller (delete account button)
 

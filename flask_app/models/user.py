@@ -54,7 +54,6 @@ class User:
                 ;"""
         result = connectToMySQL(cls.db).query_db(query, data)
         if result:
-            # ? Diego: instantiated object once, then again in login method when it's being called on.
             this_user = cls(result[0])
             return this_user
         return False
@@ -84,30 +83,30 @@ class User:
 
     #user_validation
     @staticmethod
-    def validate_user(data):
+    def validate_user_registration(data):
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         is_valid = True
         if len(data['email']) < 1:
-            flash("Email required")
+            flash("Email required","register_validation")
             is_valid = False
         if not EMAIL_REGEX.match(data['email']):
-            flash("Invalid email")
+            flash("Invalid email","register_validation")
             is_valid = False
         if User.get_user_by_email(data['email']):
-            flash("Email taken")
+            flash("Email taken","register_validation")
         if len(data['location']) < 2:
-            flash("Please provide Location")
+            flash("Please provide Location","register_validation")
             is_valid = False
         if len(data['first_name']) < 2:
-            flash("First Name must be at least 2 characters")
+            flash("First Name must be at least 2 characters","register_validation")
             is_valid = False
         if len(data['last_name']) < 2:
-            flash("Last Name be at least 2 characters")
+            flash("Last Name be at least 2 characters","register_validation")
             is_valid = False
         if len(data['password']) < 8:
-            flash("Password must be at least 8 characters")
+            flash("Password must be at least 8 characters","register_validation")
             is_valid = False
         if data['password'] != data['confirm_password']:
-            flash("Passwords must match")
+            flash("Passwords must match","register_validation")
             is_valid = False
         return is_valid

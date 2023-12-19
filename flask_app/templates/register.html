@@ -21,8 +21,8 @@
                     <h1 class="col-10 text-primary">Register</h1>
                 </div>
 
-                <!-- ? flashes for error on register inputs -->
-                <!-- {% with messages = get_flashed_messages(category_filter=["register"]) %}
+                <!-- ? flashes for error on register inputs --> -->
+                {% with messages = get_flashed_messages(category_filter=["register_validation"]) %}
                 {% if messages %}
                 <div class="p-3 my-3 rounded bg-danger-subtle bg-opacity-75 fw-semibold flashes">
                     {% for message in messages %}
@@ -30,9 +30,10 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                {% endwith %} -->
+                {% endwith %}
 
                 <!--? flash for account created success-->
+                <!-- ! probably wont need this because if account is successfully created then it redirects straight to dashboard page -->
                 <!-- {% with success = get_flashed_messages(category_filter=["acc_created"]) %}
                 {% if success %}
                 <div class="p-3 my-3 rounded bg-success-subtle bg-opacity-75 text-center fw-semibold flashes">

@@ -23,9 +23,20 @@
                 <!--? flashes for no session in use, so return back to login page-->
                 {% with messages = get_flashed_messages(category_filter=["no_user_shown_in_DB"]) %}
                 {% if messages %}
-                <div class="p-2 my-3 rounded bg-danger-subtle bg-opacity-75 text-center fw-semibold flashes">
+                <div class="p-2 my-3 rounded bg-danger-subtle bg-opacity-75 text-center fw-semibold flashes text-md-center">
                     {% for message in messages %}
                     <p class="py-1 text-danger-emphasis">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                <!-- ? flashes for logging out of account successfully -->
+                {% with messages = get_flashed_messages(category_filter=["logout_account"]) %}
+                {% if messages %}
+                <div class="p-3 my-3 rounded bg-success-subtle bg-opacity-75 fw-semibold flashes text-md-center">
+                    {% for message in messages %}
+                    <p class="py-1 text-success-emphasis">{{ message }}</p>
                     {% endfor %}
                 </div>
                 {% endif %}
@@ -34,7 +45,7 @@
                 <!--? flashes for error on register inputs-->
                 <!-- {% with messages = get_flashed_messages(category_filter=["login"]) %}
                 {% if messages %}
-                <div class="p-3 my-3 rounded bg-danger-subtle bg-opacity-75 fw-semibold flashes">
+                <div class="p-3 my-3 rounded bg-danger-subtle bg-opacity-75 fw-semibold flashes text-md-center">
                     {% for message in messages %}
                     <p class="py-1 text-danger-emphasis">{{ message }}</p>
                     {% endfor %}
