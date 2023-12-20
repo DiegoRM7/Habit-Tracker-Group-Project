@@ -101,7 +101,21 @@ class Sleep:
 # ? Validation
     @staticmethod
     def validate_user_sleep_habits(data):
-        pass
+        if data["hours"]:
+            if int(data['hours']) < 1:
+                flash("Not enough hours slept, please enter a tracked sleep session over 0 hours.","creating_sleep_habit")
+                is_valid = False
+        if not data["hours"]:
+                flash("No hours entered","creating_sleep_habit")
+                is_valid = False
+        if data["quality"]:
+            if int(data['quality']) < 1:
+                flash("quality must be great than 0, please enter a whole number","creating_sleep_habit")
+                is_valid = False
+        if not data["quality"]:
+                flash("No quality entered!","creating_sleep_habit")
+                is_valid = False
+        # ! missing to check if datetime for start / stop are empty or not
     # todo quality input type int (1-5 rating scale)
     # todo  hours int: 1-24(exclude negative int and 0)
     # todo copy datetime regex from gym validation?
