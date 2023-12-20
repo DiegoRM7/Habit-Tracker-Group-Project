@@ -19,7 +19,7 @@ class Step:
         self.updated_at = data['updated_at']
         self.user_id = data['user_id']
 
-#?? Create Step Models
+# ? Create
     @classmethod
     def create_step_habit(cls,step_data):
         query = """
@@ -29,16 +29,15 @@ class Step:
         step_id = connectToMySQL(cls.db).query_db(query,step_data)
         return step_id
 
-#?? Read Step Models
-
+# ? Read
     @classmethod
-    def get_step_habit_by_habit_id(cls,step_id): # to show in view habit page
+    def get_one_step_by_step_id(cls,steps_id): # to show in view habit page
         query = """
                 SELECT *
                 FROM steps 
-                WHERE step_id = %(step_id)s;
+                WHERE steps_id = %(steps_id)s;
                 """
-        results = connectToMySQL(cls.db).query_db(query, {"step_id" : step_id})
+        results = connectToMySQL(cls.db).query_db(query, {"steps_id" : steps_id})
         return cls(results)
 
     @classmethod
@@ -66,7 +65,7 @@ class Step:
             return []
         return results
 
-# ?? Update Step Models
+# ? Update
     @classmethod
     def update_steps(cls, data):
         query = """
@@ -79,7 +78,7 @@ class Step:
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
 
-# ?? Delete Step Models
+# ? Delete
     @classmethod
     def delete_steps(cls,steps_id):
         query = """
@@ -88,8 +87,7 @@ class Step:
                 """
         return connectToMySQL(cls.db).query_db(query, {'steps_id' : steps_id})
     
-# ?? Step Validation
-
+# ? Validation
     @staticmethod
     def validate_step_habits(data):
         is_valid = True

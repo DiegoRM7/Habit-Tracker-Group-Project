@@ -20,8 +20,7 @@ class Gym:
         self.updated_at = data['updated_at']
         self.user_id = data['user_id'] # user that's tracking their gym session
 
-# ?? Create gym Models
-
+# ? Create
     @classmethod
     def create_gym_habit(cls,gym_data):
         query = """
@@ -33,14 +32,14 @@ class Gym:
         print(query)
         return gym_id
 
-# ?? Read gym Models
+# ? Read
     @classmethod
-    def get_gym_habits_by_habit_id(cls,gym_id):
+    def get_one_gym_by_gym_id(cls,gym_id): # to show on habit detail page
         query = """
                 SELECT *
                 FROM gym 
-                WHERE gym_id = %(gym_id)s
-                ;"""
+                WHERE gym_id = %(gym_id)s;
+                """
         results = connectToMySQL(cls.db).query_db(query, {"gym_id" : gym_id})
         return cls(results)
 
@@ -71,7 +70,7 @@ class Gym:
         return results
 # ! Uriah: works in mySQL, need to test in flask ^
 
-# ?? Update Sleep Models
+# ? Update
     @classmethod
     def update_gym(cls, data):
         # ! add validations when ready
@@ -86,7 +85,7 @@ class Gym:
                 """
         return connectToMySQL(cls.db).query_db(query,data)
 
-#?? Delete Gym
+# ? Delete
     @classmethod
     def delete_gym(cls,gym_id):
         # ! add validations when ready
@@ -97,9 +96,8 @@ class Gym:
                 """
         return connectToMySQL(cls.db).query_db(query, {'gym_id' : gym_id})
         # ! will eventually return True for validation purposes
-    
-    # ?? Gym Validation
 
+# ? Validation
     @staticmethod
     def validate_user_gym_habits(data):
         reps_regex = re.compile(r'^[1-9]\d*$')

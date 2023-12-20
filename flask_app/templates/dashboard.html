@@ -28,7 +28,6 @@
 
                     <div class="row p-2 text-center">
                         <h1>GYM</h1>
-                        <p>Click a tracked habit to view it's details</p>
                         <table class="table table-striped table-dark text-center">
                             <thead>
                                 <tr>
@@ -51,7 +50,7 @@
                                     <td>{{ gym.gym_start }}</td>
                                     <td>{{ gym.gym_stop }}</td>
                                     <td>
-                                        <a href="/habit/details/{{gym.gym_id}}" title="gym">View</a>
+                                        <a href="/habit/details/gym/{{gym.gym_id}}" title="gym">View</a>
                                         <!-- ?? set up for later when we have a dashboard that owns diff habits from diff users, for now it's all from one user -->
                                         <!-- {% if session["user_id"] == gym.user_id %}
                                         <a href="/habit/details/{{gym.gym_id}}" title="gym">Edit</a>
@@ -65,7 +64,6 @@
 
                     <div class="row p-2 text-center">
                         <h1>SLEEP</h1>
-                        <p>Click a tracked habit to view it's details</p>
                         <table class="table table-striped table-dark text-center">
                             <thead>
                                 <tr>
@@ -88,7 +86,7 @@
                                     <td>{{ sleep.sleep_start }}</td>
                                     <td>{{ sleep.sleep_stop }}</td>
                                     <td>
-                                        <a href="/habit/details/{{sleep.sleep_id}}" title="sleep">View</a>
+                                        <a href="/habit/details/sleep/{{sleep.sleep_id}}" title="sleep">View</a>
                                         <!-- ?? set up for later when we have a dashboard that owns diff habits from diff users, for now it's all from one user -->
                                         <!-- {% if session["user_id"] == sleep.user_id %}
                                         <a href="/habit/details/{{sleep.sleep_id}}" title="sleep">Edit</a>
@@ -102,7 +100,6 @@
 
                     <div class="row p-2 text-center">
                         <h1>STEPS</h1>
-                        <p>Click a tracked habit to view it's details</p>
                         <table class="table table-striped table-dark text-center">
                             <thead>
                                 <tr>
@@ -120,7 +117,7 @@
                                     <td> {{ steps.amount }} </td>
                                     <td> {{ steps.location }} </td>
                                     <td>
-                                        <a href="/habit/details/{{steps.steps_id}}" title="steps">View</a>
+                                        <a href="/habit/details/steps/{{steps.steps_id}}" title="steps">View</a>
                                         <!-- ?? set up for later when we have a dashboard that owns diff habits from diff users, for now it's all from one user -->
                                         <!-- {% if session["user_id"] == steps.user_id %}
                                         <a href="/habit/details/{{steps.steps_id}}" title="steps">Edit</a>

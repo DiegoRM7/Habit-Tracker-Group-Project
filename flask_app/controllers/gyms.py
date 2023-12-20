@@ -2,17 +2,32 @@
 """all routes and controllers have been added in its entirely"""
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import gym, user # import entire file, rather than class, to avoid circular imports
+from flask_app.models import gym, user, sleep, step # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
-@app.get("/habit/details")
-def habit_details():
+# ? for habit type string, input this into each view jinja link respective to each habit type
+@app.get("/habit/details/<string:habit_type>/<int:habit_id>")
+def habit_details(habit_type, habit_id):
     if 'user_id' not in session:
         return redirect('/')
-    user_info = user.User.get_user_by_user_id_logged_in('user_id')
-    print({user_info:"first_name"})
-    return render_template("habit_details.html", user_info = user_info)
+    # user_info = user.User.get_user_by_user_id_logged_in(session['user_id'])
+
+    # with these if statements the user should be fed the appropriate data from the DB and display such things
+    # show data query that will only get everything for a specific habit id
+    # redirect to habit detail page still with respective habit details
+    # habit_type would equal the name of habit (ex:gym) which then you can say in jinja if habit_type == gym -> [do this code]
+    if habit_type == "gym":
+        gym_habit = gym.Gym.get_one_gym_by_gym_id(habit_id)
+        return redirect("habit_details.html", gym_habit = gym_habit, habit_type = habit_type)
+    
+    if habit_type == "sleep":
+        sleep_habit = sleep.Sleep.get_one_sleep_by_sleep_id(habit_id)
+        return redirect("habit_details.html", sleep_habit = sleep_habit, habit_type = habit_type)
+    
+    if habit_type == "steps":
+        steps_habit = step.Step.get_one_step_by_step_id(habit_id)
+        return redirect("habit_details.html", steps_habit = steps_habit, habit_type = habit_type)
 
 @app.get("/habit/update")
 def update_habit_page():

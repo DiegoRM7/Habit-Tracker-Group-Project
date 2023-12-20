@@ -90,21 +90,24 @@
   - [x] FE all habit data shows in all tables
     - [ ] give a certain height to each table so it can be scrollable and not take up whole page
       - [ ] FE table rows to be clickable themselves to get to the view pages
-- [ ] BE create validation to make sure user cannot open a url link to any page unless they are signed in (have a session user_id)
+- [x] BE create validation to make sure user cannot open a url link to any page unless they are signed in (have a session user_id)
 - [ ] BE update functionality for each habit
-- [ ] FE show delete button on details page
-  - [ ] only show for users that own that habit
+  - [ ] validations for update inputs (they're pre-filled with data, they should be able to put the same data)
+- [ ] FE create view page
+  - [ ] FE show delete button on details page
+  - [ ] BE route delete button to controller to work
+- [x] BE create view page (routing shows up based on habit.id and queries based on habit.id as well)
+  - [x] href=/habit/view/<habit_type>/{{ habit.id }} --> route
+  - [ ] only show EDIT for users that own that habit
 - [x] BE delete functionality for each habit
   - [ ] add validations
   - [ ] check logged in user for increased route security?
 - [x] BE join queries tests to show data on html pages
-- [ ] FE create view page
-- [ ] BE create view page (routing shows up based on habit.id and queries based on habit.id as well)
-  - [ ] href=/habit/view/{{ habit.id }} --> route
 - [ ] FE account page (including all habits from that user)
   - [ ] BE query to bring all habits of one user
 - [ ] FE password reset pop message on reset button (we have sent an message to your email detailing how to reset your password at [user's email])
   - [ ] BE query to fulfill showing all user data from current logged on user.
+- [ ] BE update functionality for user data
 
 ## Product Backlog / Stretch Goal Features:
   * API’s:
