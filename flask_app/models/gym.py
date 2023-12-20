@@ -87,16 +87,16 @@ class Gym:
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
 
-#?? Delete Step Models
+#?? Delete Gym
     @classmethod
-    def delete_steps(cls,sleep_id):
+    def delete_gym(cls,gym_id):
         # ! add validations when ready
         # ! check logged in user for increased route security?
         query = """
-                DELETE FROM sleep
-                WHERE sleep_id = %(sleep_id)s;
+                DELETE FROM gym
+                WHERE gym_id = %(gym_id)s;
                 """
-        return connectToMySQL(cls.db).query_db(query, {'sleep_id' : sleep_id})
+        return connectToMySQL(cls.db).query_db(query, {'gym_id' : gym_id})
         # ! will eventually return True for validation purposes
     
     # ?? Gym Validation
