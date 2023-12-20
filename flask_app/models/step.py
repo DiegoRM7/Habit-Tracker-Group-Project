@@ -54,7 +54,7 @@ class Step:
         return step_habit
     
     @classmethod
-    def get_all_step_habits_with_user_by_user_id(cls,user_id):
+    def get_all_step_habits_by_user_id(cls,user_id):
         query = """
                 SELECT * FROM steps
                 JOIN user
@@ -67,8 +67,6 @@ class Step:
 #?? Update Step Models
     @classmethod
     def update_steps(cls, data):
-        # ! add validations when ready
-        # ! check logged in user for increased route security?
         query = """
                 UPDATE steps
                 SET
@@ -82,19 +80,21 @@ class Step:
 #?? Delete Step Models
     @classmethod
     def delete_steps(cls,steps_id):
-        # ! add validations when ready
-        # ! check logged in user for increased route security?
         query = """
                 DELETE FROM steps
                 WHERE steps_id = %(steps_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query, {'steps_id' : steps_id})
-        # ! will eventually return True for validation purposes
     
-    #?? Step Validation
+#?? Step Validation
 
     @staticmethod
     def validate_step_habits(data):
-        pass
-    # todo regex for step amount to exclude negative int including 0
-    # todo restrict location > 0 < 50 characters? Do we find regex to exclude numbers and unique characters?
+        is_valid = True
+        if len(data['amount']) < 1:
+            flash("Please enter a step amount greater than 1, lets go knees to chest!!!","register_validation")
+            is_valid = False
+        if len(data['location']) < 1 :
+            flash("Please enter the location your steps occured","register_validation")
+            is_valid = False
+        return is_valid

@@ -65,7 +65,6 @@ class Gym:
                 ON user.id = gym.user_id 
                 WHERE gym.user_id = %(user_id)s;
                 """
-        # small edit on the naming of the user_id since it's only bringing in one dictionary type
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
         return results
 # ! Uriah: works in mySQL, need to test in flask ^
@@ -74,7 +73,6 @@ class Gym:
     @classmethod
     def update_gym(cls, data):
         # ! add validations when ready
-        # ! check logged in user for increased route security?
         query = """
                 UPDATE gym
                 SET
@@ -85,7 +83,6 @@ class Gym:
                 WHERE gym_id = %(gym_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query,data)
-        # ! will eventually return True for validation purposes
 
 #?? Delete Step Models
     @classmethod
@@ -109,5 +106,5 @@ class Gym:
             flash("Failed rep? Please enter a rep count greater than 0, or decrease the weigh until you can manage one repitition")
             is_valid = False
         return is_valid
-        
+
         # ! Uriah: validate hours, gym start/stop with same regex? might need another regex to ensure proper time inputs(start/stop)

@@ -66,6 +66,7 @@ class User:
                 WHERE id = %(user_id)s;
                 """
         result = connectToMySQL(cls.db).query_db(query, {'user_id': user_id})
+        print("_____________________",result)
         return result
     
     # Update Users Models
