@@ -11,8 +11,9 @@ def create_sleep_habit_form_process():
     if 'user_id' not in session:
         return redirect('/')
     if sleep.Sleep.create_sleep_habit(request.form):
-        print("Sleep habit was created with a sleep id")
-        return redirect("/habit/details")
+        print("Sleep habit was created!")
+        return redirect("/dashboard")
+        # will redirect to ("/habit/details") later on when we have page made
     return redirect("/habit/create")
 
 

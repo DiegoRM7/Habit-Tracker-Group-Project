@@ -11,7 +11,9 @@ def create_step_habit_form_process():
     if 'user_id' not in session:
         return redirect('/')
     if step.Step.create_step_habit(request.form):
-        return redirect("/habit/details")
+        print("step habit was created! Should be redirect to dashboard")    #will convert to flash later
+        return redirect("/dashboard")
+    # will redirect to ("/habit/details") later on when we have page made
     return redirect("/habit/create")
 
 @app.post("/habit/update/steps/process")

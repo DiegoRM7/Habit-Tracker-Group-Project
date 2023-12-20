@@ -21,7 +21,7 @@ class Sleep:
         self.updated_at = data['updated_at']
         self.user_id = data['user_id'] # user that's tracking their sleep
 
-    # ?? Create Sleeps Models
+# ? Create
     @classmethod
     def create_sleep_habit(cls,sleep_data):
         query = """
@@ -32,20 +32,20 @@ class Sleep:
         print(sleep_id)
         return sleep_id
 
-# ?? Read Sleep Models
-
+# ? Read
     @classmethod
-    def get_sleep_habit_by_habit_id(cls,sleep_id):
+    def get_one_sleep_by_sleep_id(cls,sleep_id): # to show on view page
         query = """
                 SELECT *
                 FROM sleep 
-                WHERE sleep_id = %(sleep_id)s
-                ;"""
+                WHERE sleep_id = %(sleep_id)s;
+                """
         results = connectToMySQL(cls.db).query_db(query, {"sleep_id" : sleep_id})
-        return cls(results)
+        print(results[0])
+        return cls(results[0])
 
     @classmethod 
-    def get_all_sleep_habits(cls):    # for one table in the dashboard
+    def get_all_sleep_habits(cls):    # for one table in the dashboard going to be used after mvp
         query = """
                 SELECT * 
                 FROM sleep
@@ -58,18 +58,19 @@ class Sleep:
         return sleep_habit
 
     @classmethod 
-    def get_all_sleep_habits_by_user_id(cls, user_id):
+    def get_all_sleep_habits_by_user_id(cls, user_id):   # for one table in the dashboard NOW
         query = """
                 SELECT * FROM sleep
                 JOIN user
                 ON user.id = sleep.user_id
-                WHERE sleep.user_id = %(user_id)s
-                ;"""
-        # small edit on the naming of the user_id since it's only bringing in one dictionary type.
+                WHERE sleep.user_id = %(user_id)s;
+                """
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
+        if not results:
+            return []
         return results
 
-# ?? Update Sleep Models
+# ? Update
     @classmethod
     def update_sleep(cls, data):
         # ! add validations when ready
@@ -84,7 +85,7 @@ class Sleep:
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
 
-#?? Delete Sleep
+# ? Delete
     @classmethod
     def delete_sleep(cls,sleep_id):
         # ! add validations when ready
@@ -97,7 +98,7 @@ class Sleep:
         # ! will eventually return True for validation purposes
 
         
-# ?? Sleep Validation
+# ? Validation
     @staticmethod
     def validate_user_sleep_habits(data):
         pass

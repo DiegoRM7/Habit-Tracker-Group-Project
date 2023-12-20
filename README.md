@@ -75,28 +75,44 @@
        * Amount (# of steps tracked in session)
        * Location (City, St)
       * Gym
-      * Reps
-       * Hours in gym
-       * Workout time start (time)
-       * Workout end (time)
-       * Type Workout (chest, legs, etc)
+       * Reps  (num)
+       * Hours (in gym)
+       * Workout start (datetime-local)
+       * Workout end (datetime-local)
+       * Type Workout (chest, legs, etc) (not implemented)
 
 ## MVP CHECKLIST:
 - [x] FE logout button & BE functionality for dashboard
 - [x] FE update page boilerplate done
-- [x] FE create page boilerpalte done
-  - [ ] logout button put on all pages
-- [ ] BE create validation to make sure user cannot open a url link to any page unless they are signed in (have a session user_id)
+- [x] FE create page boilerplate done
+  - [x] logout button put on all pages (update and create page added)
+- [x] FE dashboard tables show
+  - [x] FE all habit data shows in all tables
+    - [ ] give a certain height to each table so it can be scrollable and not take up whole page
+      - [ ] FE table rows to be clickable themselves to get to the view pages
+- [x] BE create validation to make sure user cannot open a url link to any page unless they are signed in (have a session user_id)
 - [ ] BE update functionality for each habit
-- [ ] BE delete functionality for each habit
-- [ ] BE join queries tests to show data on html pages
-- [ ] FE create view page
-- [ ] BE create view page (routing shows up based on habit.id and queries based on habit.id as well)
-  - [ ] href=/habit/view/{{ habit.id }} --> route
+  - [ ] validations for update inputs (they're pre-filled with data, they should be able to put the same data)
+- [x] FE create view page
+  - [x] all appropriate data for habit selected shows on page
+  - [x] FE show delete button on details page
+  - [x] BE route delete button to controller to work
+- [x] BE create view page (routing shows up based on habit.id and queries based on habit.id as well)
+  - [x] href=/habit/view/<habit_type>/{{ habit.id }} --> route
+  - [ ] only show EDIT for users that own that habit (with jinja2)
+  - [ ] only show DELETE for users that own that habit (with jinja2)
+  - [ ] only let users that own that habit be able to DELETE THAT HABIT THROUGH THE URL
+    - [ ] validations?
+- [x] BE delete functionality ROUTE for each habit
+- [x] BE delete functionality MODELS for each habit
+  - [ ] add validations
+  - [ ] check logged in user for increased route security?
+- [x] BE join queries tests to show data on html pages
 - [ ] FE account page (including all habits from that user)
   - [ ] BE query to bring all habits of one user
 - [ ] FE password reset pop message on reset button (we have sent an message to your email detailing how to reset your password at [user's email])
-  - [ ] BE query to fullfill showing all user data from current logged on user.
+  - [ ] BE query to fulfill showing all user data from current logged on user.
+- [ ] BE update functionality for user data
 
 ## Product Backlog / Stretch Goal Features:
   * API’s:
