@@ -14,9 +14,16 @@ def create_step_habit_form_process():
         return redirect("/habit/details")
     return redirect("/habit/create")
 
+@app.post("/habit/update/steps/process")
+def update_habit_form_process():
+    if 'user_id' not in session:
+        return redirect('/')
+    if step.Step.validate_step_habits(request.form):
+        step.Step.update_steps(request.form)
+        return redirect("/habit/update")
+    return redirect("/habit/update")
 
-
-
+# todo dashboard needs to display habits in order to fulfill habit_id 
 
 
 

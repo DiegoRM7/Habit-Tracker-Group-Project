@@ -56,19 +56,18 @@ class Sleep:
         for a_sleep_habit in results:
             sleep_habit.append(cls(a_sleep_habit))
         return sleep_habit
-    
+
     @classmethod 
-    def get_all_sleep_habits_with_user_by_user_id(cls, user_id):
+    def get_all_sleep_habits_by_user_id(cls, user_id):
         query = """
                 SELECT * FROM sleep
                 JOIN user
                 ON user.id = sleep.user_id
-                WHERE gym.user_id = %(user_id)s;
-                """
+                WHERE sleep.user_id = %(user_id)s
+                ;"""
         # small edit on the naming of the user_id since it's only bringing in one dictionary type.
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
-        return cls(results)
-# ! Uriah: works in mySQL, need to test in flask ^
+        return results
 
 # ?? Update Sleep Models
     @classmethod

@@ -21,7 +21,7 @@ def update_habit_page():
     return render_template("update_habit.html")
 
 @app.get("/account/details")
-def accountdetails():
+def account_details():
     if 'user_id' not in session:
         return redirect('/')
     return "account details template"
@@ -38,7 +38,7 @@ def create_gym_habit_form_process():
         return redirect('/')
     if gym.Gym.create_gym_habit(request.form):
         print("\ngym habit got created successfully\n")
-        return redirect(f"/habit/details/{habit_id}")
+        return redirect(f'/habit/details/{request.form["habit_id"]}')
     return redirect("/habit/create")
 
 
