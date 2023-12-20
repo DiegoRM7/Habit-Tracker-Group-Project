@@ -45,7 +45,7 @@ class Gym:
         return cls(results)
 
     @classmethod
-    def get_all_gym_habits(cls):    # for one table in the dashboard
+    def get_all_gym_habits(cls):    # for one table in the dashboard going to be used after mvp
         query = """
                 SELECT *
                 FROM gym
@@ -58,7 +58,7 @@ class Gym:
         return gym_habit
 
     @classmethod
-    def get_all_gym_habits_with_user_by_user_id(cls, user_id):
+    def get_all_gym_habits_with_user_by_user_id(cls, user_id): # for one table in the dashboard
         query = """
                 SELECT * FROM gym 
                 JOIN user 

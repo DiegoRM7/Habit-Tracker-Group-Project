@@ -38,7 +38,8 @@ def create_gym_habit_form_process():
         return redirect('/')
     if gym.Gym.create_gym_habit(request.form):
         print("\ngym habit got created successfully\n")
-        return redirect(f'/habit/details/{request.form["habit_id"]}')
+        return redirect("/dashboard")
+        # later will use return redirect(f'/habit/details/{request.form["habit_id"]}')
     return redirect("/habit/create")
 
 

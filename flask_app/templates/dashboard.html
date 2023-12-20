@@ -16,11 +16,9 @@
             <div class="col-12 d-md-inline-flex justify-content-end">
                 <a href="/dashboard" class="btn btn-outline-dark rounded-0 hover-shadow bg-primary-subtle text-black fw-bold px-3">Dashboard</a>
                 <a href="/habit/create" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Create Habit</a>
-                <!-- ?? need to create logout route, going to make this into a dropdown to contain both -->
                 <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
                 <a href="/logout" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Logout</a>
             </div>
-            <!-- ?? need to add a session of signed in username once they sign in -->
             <h1 class="col-6 text-start fw-bold top-title">Welcome {{session['first_name']}} !</h1>
             <p class="text-success-emphasis fw-bolder top-title">Current Rank #44</p>
         </nav>
@@ -28,8 +26,9 @@
             <div class="p-4 mb-3 card bg-opacity-75 bg-light hover-shadow border-1 border-dark-subtle border">
                 <div class="row">
 
-                    <div class="row bg-primary p-2">
-                        <h4>GYM</h4>
+                    <div class="row p-2 text-center">
+                        <h1>GYM</h1>
+                        <p>Click a tracked habit to view it's details</p>
                         <table class="table table-striped table-dark text-center">
                             <thead>
                                 <tr>
@@ -38,6 +37,7 @@
                                     <th>Hours</th>
                                     <th>Start session</th>
                                     <th>Stop session</th>
+                                    <th>Links</th>
                                     <!-- <th>created at</th> -->
                                     <!-- <th>updated at</th> -->
                                 </tr>
@@ -50,14 +50,22 @@
                                     <td>{{ gym.hours }}</td>
                                     <td>{{ gym.gym_start }}</td>
                                     <td>{{ gym.gym_stop }}</td>
+                                    <td>
+                                        <a href="/habit/details/{{gym.gym_id}}" title="gym">View</a>
+                                        <!-- ?? set up for later when we have a dashboard that owns diff habits from diff users, for now it's all from one user -->
+                                        <!-- {% if session["user_id"] == gym.user_id %}
+                                        <a href="/habit/details/{{gym.gym_id}}" title="gym">Edit</a>
+                                        {% endif %} -->
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="row bg-success p-2">
-                        <h4>SLEEP</h4>
+                    <div class="row p-2 text-center">
+                        <h1>SLEEP</h1>
+                        <p>Click a tracked habit to view it's details</p>
                         <table class="table table-striped table-dark text-center">
                             <thead>
                                 <tr>
@@ -66,40 +74,58 @@
                                     <th>Quality</th>
                                     <th>Sleep start</th>
                                     <th>Sleep stop</th>
+                                    <th>Links</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- will create a jinja2 for loop to find all available data -->
                                 {% for sleep in all_sleep_habits %}
                                 <tr>
+                                    <!-- /habit/details/{{sleep.sleep_id}} -->
                                     <th>{{ sleep.first_name }}</th>
                                     <td>{{ sleep.amount }}</td>
                                     <td>{{ sleep.quality }}</td>
                                     <td>{{ sleep.sleep_start }}</td>
                                     <td>{{ sleep.sleep_stop }}</td>
+                                    <td>
+                                        <a href="/habit/details/{{sleep.sleep_id}}" title="sleep">View</a>
+                                        <!-- ?? set up for later when we have a dashboard that owns diff habits from diff users, for now it's all from one user -->
+                                        <!-- {% if session["user_id"] == sleep.user_id %}
+                                        <a href="/habit/details/{{sleep.sleep_id}}" title="sleep">Edit</a>
+                                        {% endif %} -->
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="row bg-light p-2">
-                        <h4>STEPS</h4>
+                    <div class="row p-2 text-center">
+                        <h1>STEPS</h1>
+                        <p>Click a tracked habit to view it's details</p>
                         <table class="table table-striped table-dark text-center">
                             <thead>
                                 <tr>
                                     <th>User Name</th>
                                     <th>Amount</th>
                                     <th>Location</th>
+                                    <th>Links</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- will create a jinja2 for loop to find all available data -->
                                 {% for steps in all_step_habits %}
                                 <tr>
-                                    <th> {{ steps.first_name }} </th>
-                                    <th> {{ steps.amount }} </th>
-                                    <th> {{ steps.location }} </th>
+                                    <td> {{ steps.first_name }} </td>
+                                    <td> {{ steps.amount }} </td>
+                                    <td> {{ steps.location }} </td>
+                                    <td>
+                                        <a href="/habit/details/{{steps.steps_id}}" title="steps">View</a>
+                                        <!-- ?? set up for later when we have a dashboard that owns diff habits from diff users, for now it's all from one user -->
+                                        <!-- {% if session["user_id"] == steps.user_id %}
+                                        <a href="/habit/details/{{steps.steps_id}}" title="steps">Edit</a>
+                                        {% endif %} -->
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -112,5 +138,3 @@
     </div>
 </body>
 </html>
-
-<!-- testing a push/pull-request to remote repo main -->

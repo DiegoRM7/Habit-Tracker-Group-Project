@@ -32,7 +32,7 @@ class Step:
 #?? Read Step Models
 
     @classmethod
-    def get_step_habit_by_habit_id(cls,step_id): # to show in view page
+    def get_step_habit_by_habit_id(cls,step_id): # to show in view habit page
         query = """
                 SELECT *
                 FROM steps 
@@ -54,19 +54,19 @@ class Step:
         return step_habit
     
     @classmethod
-    def get_all_step_habits_by_user_id(cls,user_id): # for dashboard table
+    def get_all_step_habits_by_user_id(cls, user_id): # for dashboard table NOW working
         query = """
                 SELECT * FROM steps
                 JOIN user
-                ON user.id = step.user_id
-                WHERE step.user_id = %(user_id)
+                ON user.id = steps.user_id
+                WHERE steps.user_id = %(user_id)s
                 """
         results = connectToMySQL(cls.db).query_db(query,{"user_id": user_id})
         if not results:
             return []
         return results
-    
-#?? Update Step Models
+
+# ?? Update Step Models
     @classmethod
     def update_steps(cls, data):
         query = """
@@ -79,7 +79,7 @@ class Step:
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
 
-#?? Delete Step Models
+# ?? Delete Step Models
     @classmethod
     def delete_steps(cls,steps_id):
         query = """
@@ -88,7 +88,7 @@ class Step:
                 """
         return connectToMySQL(cls.db).query_db(query, {'steps_id' : steps_id})
     
-#?? Step Validation
+# ?? Step Validation
 
     @staticmethod
     def validate_step_habits(data):

@@ -45,7 +45,7 @@ class Sleep:
         return cls(results)
 
     @classmethod 
-    def get_all_sleep_habits(cls):    # for one table in the dashboard
+    def get_all_sleep_habits(cls):    # for one table in the dashboard going to be used after mvp
         query = """
                 SELECT * 
                 FROM sleep
@@ -58,7 +58,7 @@ class Sleep:
         return sleep_habit
 
     @classmethod 
-    def get_all_sleep_habits_by_user_id(cls, user_id):
+    def get_all_sleep_habits_by_user_id(cls, user_id):   # for one table in the dashboard NOW
         query = """
                 SELECT * FROM sleep
                 JOIN user
@@ -85,7 +85,7 @@ class Sleep:
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
 
-#?? Delete Sleep
+# ?? Delete Sleep
     @classmethod
     def delete_sleep(cls,sleep_id):
         # ! add validations when ready
