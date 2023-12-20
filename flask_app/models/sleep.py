@@ -63,10 +63,11 @@ class Sleep:
                 SELECT * FROM sleep
                 JOIN user
                 ON user.id = sleep.user_id
-                WHERE sleep.user_id = %(user_id)s
-                ;"""
-        # small edit on the naming of the user_id since it's only bringing in one dictionary type.
+                WHERE sleep.user_id = %(user_id)s;
+                """
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
+        if not results:
+            return []
         return results
 
 # ?? Update Sleep Models

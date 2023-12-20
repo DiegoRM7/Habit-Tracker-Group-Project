@@ -11,7 +11,7 @@ def habit_details():
     if 'user_id' not in session:
         return redirect('/')
     user_info = user.User.get_user_by_user_id_logged_in('user_id')
-    print(user_info["first_name"])
+    print({user_info:"first_name"})
     return render_template("habit_details.html", user_info = user_info)
 
 @app.get("/habit/update")

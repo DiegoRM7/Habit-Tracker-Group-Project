@@ -43,7 +43,6 @@ class User:
         return user_id
 
     # Read Users Models
-
     @classmethod
     def get_user_by_email(cls, email):
         query = """
@@ -69,21 +68,12 @@ class User:
         print("_____________________",result)
         return result
     
-    # Update Users Models
-# =======
 #?? Update Users Models
-# >>>>>>> main
-
-
 #?? Delete Users Models
 
-
-
 #?? user_login
-
     @classmethod
     def login(cls, data):
-        # ? Diego: instantiated object once, then again in login method when it's being called on. fixed, test if works after.
         this_user = User.get_user_by_email(data['email'])
         if this_user:
             if bcrypt.check_password_hash(this_user.password, data['password']):

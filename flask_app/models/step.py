@@ -25,24 +25,24 @@ class Step:
         query = """
                 INSERT INTO steps (amount, location, user_id)
                 VALUES (%(amount)s, %(location)s, %(user_id)s)
-                ;"""
+                """
         step_id = connectToMySQL(cls.db).query_db(query,step_data)
         return step_id
 
 #?? Read Step Models
 
     @classmethod
-    def get_step_habit_by_habit_id(cls,step_id):
+    def get_step_habit_by_habit_id(cls,step_id): # to show in view page
         query = """
                 SELECT *
                 FROM steps 
-                WHERE step_id = %(step_id)s
-                ;"""
+                WHERE step_id = %(step_id)s;
+                """
         results = connectToMySQL(cls.db).query_db(query, {"step_id" : step_id})
         return cls(results)
 
     @classmethod
-    def get_all_step_habits(cls):
+    def get_all_step_habits(cls): # used for dashboard after MVP
         query = """
                 SELECT * 
                 FROM steps
@@ -54,14 +54,16 @@ class Step:
         return step_habit
     
     @classmethod
-    def get_all_step_habits_by_user_id(cls,user_id):
+    def get_all_step_habits_by_user_id(cls,user_id): # for dashboard table
         query = """
                 SELECT * FROM steps
                 JOIN user
                 ON user.id = step.user_id
-                WHERE step.user_id = %(user_id);
+                WHERE step.user_id = %(user_id)
                 """
         results = connectToMySQL(cls.db).query_db(query,{"user_id": user_id})
+        if not results:
+            return []
         return results
     
 #?? Update Step Models

@@ -66,6 +66,8 @@ class Gym:
                 WHERE gym.user_id = %(user_id)s;
                 """
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
+        if not results:
+            return []
         return results
 # ! Uriah: works in mySQL, need to test in flask ^
 
