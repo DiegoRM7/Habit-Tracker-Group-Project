@@ -22,6 +22,8 @@ class Step:
 # ? Create
     @classmethod
     def create_step_habit(cls,step_data):
+        if not cls.validate_step_habits(step_data):
+            return False
         query = """
                 INSERT INTO steps (amount, location, user_id)
                 VALUES (%(amount)s, %(location)s, %(user_id)s)
@@ -81,21 +83,25 @@ class Step:
 
 # ? Delete
     @classmethod
-    def delete_steps(cls,steps_id):
+    def delete_steps(cls,step_id):
         query = """
                 DELETE FROM steps
-                WHERE steps_id = %(steps_id)s;
+                WHERE step_id = %(step_id)s;
                 """
-        return connectToMySQL(cls.db).query_db(query, {'steps_id' : steps_id})
+        return connectToMySQL(cls.db).query_db(query, {'step_id' : step_id})
     
 # ? Validation
     @staticmethod
     def validate_step_habits(data):
+        STEP_LOCATION_REGEX = re.compile(r'^[^-0-9]+$')
         is_valid = True
-        if len(data['amount']) < 1:
-            flash("Please enter a step amount greater than 1, lets go knees to chest!!!","register_validation")
+        if int(data['amount']) < 1:
+            flash("Please enter a step amount greater than 0, lets go knees to chest!!!","creating_steps_habit")
             is_valid = False
-        if len(data['location']) < 1 :
-            flash("Please enter the location your steps occured","register_validation")
+        if len(data['location']) < 2 :
+            flash("Please enter the location your steps occured","creating_steps_habit")
             is_valid = False
+        if not STEP_LOCATION_REGEX.match(data['location']):
+            is_valid = False
+            return False
         return is_valid
