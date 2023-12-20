@@ -28,7 +28,7 @@ class User:
     # Create Users Models
     @classmethod
     def create_user(cls,user_data):
-        if not cls.validate_user(user_data):
+        if not cls.validate_user_registration(user_data):
             return False
         user_data = user_data.copy()
         user_data['password'] = bcrypt.generate_password_hash(user_data['password'])

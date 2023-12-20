@@ -1,7 +1,7 @@
 """"this file is going to be the sleep controllers file"""
 """all routes and controllers have been added in its entirely"""
 from flask_app import app
-from flask import render_template, redirect, request, session
+from flask import render_template, redirect, request, session, flash
 from flask_app.models import step # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
@@ -11,7 +11,7 @@ def create_step_habit_form_process():
     if 'user_id' not in session:
         return redirect('/')
     if step.Step.create_step_habit(request.form):
-        print("step habit was created! Should be redirect to dashboard")    #will convert to flash later
+        print("step habit was created! Should be redirect to dashboard") #convert to flash when ready
         return redirect("/dashboard")
     # will redirect to ("/habit/details") later on when we have page made
     return redirect("/habit/create")
