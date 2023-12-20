@@ -67,22 +67,52 @@
                 <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
                     <div class="text-center justify-content-center row p-3">
                         {% if habit_type == "sleep" %}
-                        <p> {{sleep_habit.quality}} </p>
-                        <p> {{sleep_habit.hours}} </p>
-                        <p> {{sleep_habit.sleep_start}} </p>
-                        <p> {{sleep_habit.sleep_stop}} </p>
+                        <p>
+                            <span class="fw-bold">Sleep quality (1 - 5 rating): </span>
+                            {{sleep_habit.quality}}
+                        </p>
+                        <p>
+                            <span class="fw-bold">Amount of hours slept: </span>
+                            {{sleep_habit.hours}}
+                        </p>
+                        <p>
+                            <span class="fw-bold">Went to sleep at: </span>
+                            {{sleep_habit.sleep_start.strftime("%B, %d %Y %I:%M %p")}}
+                        </p>
+                        <p>
+                            <span class="fw-bold">Woke up at: </span>
+                            {{sleep_habit.sleep_stop.strftime("%B, %d %Y %I:%M %p")}}
+                        </p>
                         {% endif %}
 
                         {% if habit_type == "steps" %}
-                        <p> {{steps_habit.amount}} </p>
-                        <p> {{steps_habit.location}} </p>
+                        <p>
+                            <span class="fw-bold">Tracked steps: </span>
+                            {{steps_habit.amount}}
+                        </p>
+                        <p>
+                            <span class="fw-bold">Steps were recorded at location: </span>
+                            {{steps_habit.location}}
+                        </p>
                         {% endif %}
 
                         {% if habit_type == "gym" %}
-                        <p> {{gym_habit.reps}} </p>
-                        <p> {{gym_habit.hours}} </p>
-                        <p> {{gym_habit.gym_start}} </p>
-                        <p> {{gym_habit.gym_stop}} </p>
+                        <p>
+                            <span class="fw-bold">Amount of reps during session: </span>
+                            {{gym_habit.reps}}
+                        </p>
+                        <p>
+                            <span class="fw-bold">Hours for workout to finish: </span>
+                            {{gym_habit.hours}}
+                        </p>
+                        <p>
+                            <span class="fw-bold">Started Exercising at: </span>
+                            {{gym_habit.gym_start.strftime("%B, %d %Y %I:%M %p")}}
+                        </p>
+                        <p>
+                            <span class="fw-bold">Stopped Exercising at: </span>
+                            {{gym_habit.gym_stop.strftime("%B, %d %Y %I:%M %p")}}
+                        </p>
                         {% endif %}
                     </div>
                 </div>

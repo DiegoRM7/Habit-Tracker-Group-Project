@@ -13,8 +13,8 @@ class Step:
     db = "habit_tracker_schema"
     def __init__(self, data):
         self.step_id = data['step_id']
-        self.first_name = data['amount']
-        self.last_name = data['location']
+        self.amount = data['amount']
+        self.location = data['location']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id = data['user_id']
@@ -31,13 +31,13 @@ class Step:
 
 # ? Read
     @classmethod
-    def get_one_step_by_step_id(cls,steps_id): # to show in view habit page
+    def get_one_step_by_step_id(cls,step_id): # to show in view habit page
         query = """
                 SELECT *
                 FROM steps 
-                WHERE step_id = %(steps_id)s;
+                WHERE step_id = %(step_id)s;
                 """
-        results = connectToMySQL(cls.db).query_db(query, {"steps_id": steps_id})
+        results = connectToMySQL(cls.db).query_db(query, {"step_id": step_id})
         print(results[0])
         return cls(results[0])
 
