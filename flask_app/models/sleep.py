@@ -84,9 +84,9 @@ class Sleep:
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
 
-#?? Delete Step Models
+#?? Delete Sleep
     @classmethod
-    def delete_steps(cls,sleep_id):
+    def delete_sleep(cls,sleep_id):
         # ! add validations when ready
         # ! check logged in user for increased route security?
         query = """
