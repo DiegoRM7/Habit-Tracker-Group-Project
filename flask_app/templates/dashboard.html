@@ -81,7 +81,7 @@
                                 <tr>
                                     <!-- /habit/details/{{sleep.sleep_id}} -->
                                     <th>{{ sleep.first_name }}</th>
-                                    <td>{{ sleep.amount }}</td>
+                                    <td>{{ sleep.hours }}</td>
                                     <td>{{ sleep.quality }}</td>
                                     <td>{{ sleep.sleep_start }}</td>
                                     <td>{{ sleep.sleep_stop }}</td>
@@ -117,7 +117,7 @@
                                     <td> {{ steps.amount }} </td>
                                     <td> {{ steps.location }} </td>
                                     <td>
-                                        <a href="/habit/details/steps/{{steps.steps_id}}" title="steps">View</a>
+                                        <a href="/habit/details/steps/{{steps.step_id}}" title="steps">View</a>
                                         <!-- ?? set up for later when we have a dashboard that owns diff habits from diff users, for now it's all from one user -->
                                         <!-- {% if session["user_id"] == steps.user_id %}
                                         <a href="/habit/details/{{steps.steps_id}}" title="steps">Edit</a>

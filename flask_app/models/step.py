@@ -35,10 +35,11 @@ class Step:
         query = """
                 SELECT *
                 FROM steps 
-                WHERE steps_id = %(steps_id)s;
+                WHERE step_id = %(steps_id)s;
                 """
-        results = connectToMySQL(cls.db).query_db(query, {"steps_id" : steps_id})
-        return cls(results)
+        results = connectToMySQL(cls.db).query_db(query, {"steps_id": steps_id})
+        print(results[0])
+        return cls(results[0])
 
     @classmethod
     def get_all_step_habits(cls): # used for dashboard after MVP

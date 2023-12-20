@@ -15,19 +15,20 @@ def habit_details(habit_type, habit_id):
 
     # with these if statements the user should be fed the appropriate data from the DB and display such things
     # show data query that will only get everything for a specific habit id
-    # redirect to habit detail page still with respective habit details
+    # render_template to habit detail page still with respective habit details
     # habit_type would equal the name of habit (ex:gym) which then you can say in jinja if habit_type == gym -> [do this code]
     if habit_type == "gym":
         gym_habit = gym.Gym.get_one_gym_by_gym_id(habit_id)
-        return redirect("habit_details.html", gym_habit = gym_habit, habit_type = habit_type)
+        print(gym_habit)
+        return render_template("habit_details.html", gym_habit = gym_habit, habit_type = habit_type, habit_id = habit_id)
     
     if habit_type == "sleep":
         sleep_habit = sleep.Sleep.get_one_sleep_by_sleep_id(habit_id)
-        return redirect("habit_details.html", sleep_habit = sleep_habit, habit_type = habit_type)
+        return render_template("habit_details.html", sleep_habit = sleep_habit, habit_type = habit_type, habit_id = habit_id)
     
     if habit_type == "steps":
         steps_habit = step.Step.get_one_step_by_step_id(habit_id)
-        return redirect("habit_details.html", steps_habit = steps_habit, habit_type = habit_type)
+        return render_template("habit_details.html", steps_habit = steps_habit, habit_type = habit_type, habit_id = habit_id)
 
 @app.get("/habit/update")
 def update_habit_page():
@@ -56,6 +57,19 @@ def create_gym_habit_form_process():
         return redirect("/dashboard")
         # later will use return redirect(f'/habit/details/{request.form["habit_id"]}')
     return redirect("/habit/create")
+
+# ? DELETE HABIT ROUTE
+@app.get("/habit/delete/<string:habit_type>/<int:habit_id>")
+def delete_habit(habit_type, habit_id):
+    if habit_type == "gym":
+        gym.Gym.delete_gym(habit_id)
+        return redirect("/dashboard")
+    if habit_type == "sleep":
+        sleep.Sleep.delete_sleep(habit_id)
+        return redirect("/dashboard")
+    if habit_type == "steps":
+        step.Step.delete_steps(habit_id)
+        return redirect("/dashboard")
 
 
 

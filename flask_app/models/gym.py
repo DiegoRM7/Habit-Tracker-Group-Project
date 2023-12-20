@@ -11,7 +11,7 @@ bcrypt = Bcrypt(app)
 class Gym:
     db = "habit_tracker_schema"
     def __init__(self, data):
-        self.id = data['gym_id']
+        self.gym_id = data['gym_id']
         self.reps = data['reps']
         self.hours = data['hours']
         self.gym_start = data['gym_start']
@@ -40,8 +40,9 @@ class Gym:
                 FROM gym 
                 WHERE gym_id = %(gym_id)s;
                 """
-        results = connectToMySQL(cls.db).query_db(query, {"gym_id" : gym_id})
-        return cls(results)
+        results = connectToMySQL(cls.db).query_db(query, {"gym_id": gym_id})
+        print(f"{results[0]}\n")
+        return cls(results[0])
 
     @classmethod
     def get_all_gym_habits(cls):    # for one table in the dashboard going to be used after mvp

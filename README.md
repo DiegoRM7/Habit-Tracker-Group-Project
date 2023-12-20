@@ -75,11 +75,11 @@
        * Amount (# of steps tracked in session)
        * Location (City, St)
       * Gym
-      * Reps
-       * Hours in gym
-       * Workout time start (time)
-       * Workout end (time)
-       * Type Workout (chest, legs, etc)
+       * Reps  (num)
+       * Hours (in gym)
+       * Workout start (datetime-local)
+       * Workout end (datetime-local)
+       * Type Workout (chest, legs, etc) (not implemented)
 
 ## MVP CHECKLIST:
 - [x] FE logout button & BE functionality for dashboard
@@ -93,13 +93,18 @@
 - [x] BE create validation to make sure user cannot open a url link to any page unless they are signed in (have a session user_id)
 - [ ] BE update functionality for each habit
   - [ ] validations for update inputs (they're pre-filled with data, they should be able to put the same data)
-- [ ] FE create view page
-  - [ ] FE show delete button on details page
-  - [ ] BE route delete button to controller to work
+- [x] FE create view page
+  - [x] all appropriate data for habit selected shows on page
+  - [x] FE show delete button on details page
+  - [x] BE route delete button to controller to work
 - [x] BE create view page (routing shows up based on habit.id and queries based on habit.id as well)
   - [x] href=/habit/view/<habit_type>/{{ habit.id }} --> route
-  - [ ] only show EDIT for users that own that habit
-- [x] BE delete functionality for each habit
+  - [ ] only show EDIT for users that own that habit (with jinja2)
+  - [ ] only show DELETE for users that own that habit (with jinja2)
+  - [ ] only let users that own that habit be able to DELETE THAT HABIT THROUGH THE URL
+    - [ ] validations?
+- [x] BE delete functionality ROUTE for each habit
+- [x] BE delete functionality MODELS for each habit
   - [ ] add validations
   - [ ] check logged in user for increased route security?
 - [x] BE join queries tests to show data on html pages

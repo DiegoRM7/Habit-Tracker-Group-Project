@@ -34,14 +34,15 @@ class Sleep:
 
 # ? Read
     @classmethod
-    def get_one_sleep_by_sleep_id(cls,sleep_id):
+    def get_one_sleep_by_sleep_id(cls,sleep_id): # to show on view page
         query = """
                 SELECT *
                 FROM sleep 
                 WHERE sleep_id = %(sleep_id)s;
                 """
         results = connectToMySQL(cls.db).query_db(query, {"sleep_id" : sleep_id})
-        return cls(results)
+        print(results[0])
+        return cls(results[0])
 
     @classmethod 
     def get_all_sleep_habits(cls):    # for one table in the dashboard going to be used after mvp
