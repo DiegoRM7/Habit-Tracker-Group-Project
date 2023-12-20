@@ -16,17 +16,15 @@ def create_user():
     if not user.User.validate_user_registration(request.form):
         return redirect("/")
     if user.User.create_user(request.form):
-        return redirect("/dashboard", sleep_data = sleep.Sleep.get_all_sleep_habits())
+        return redirect("/dashboard")
     print("There was an error creating a user for some reason")
     return redirect("/")
-
 @app.get("/dashboard")
 def dashboard():
     if 'user_id' not in session:
         return redirect('/login')
     # sleep_data = sleep.Sleep.get_all_sleep_habits()
     # user_info = user.User.get_user_by_user_id_logged_in('user_id')
-
     all_gym_habits = gym.Gym.get_all_gym_habits_with_user_by_user_id(session["user_id"])
     all_sleep_habits = sleep.Sleep.get_all_sleep_habits_by_user_id(session["user_id"])
     all_step_habits = step.Step.get_all_step_habits_by_user_id(session["user_id"])
