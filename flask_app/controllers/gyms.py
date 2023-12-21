@@ -40,11 +40,9 @@ def update_habit_page(habit_type, habit_id):
     if habit_type == "gym":
         gym_habit = gym.Gym.get_one_gym_by_gym_id(habit_id)
         return render_template("update_habit.html", gym_habit = gym_habit, habit_type = habit_type, habit_id = habit_id)
-    
     if habit_type == "sleep":
         sleep_habit = sleep.Sleep.get_one_sleep_by_sleep_id(habit_id)
         return render_template("update_habit.html", sleep_habit = sleep_habit, habit_type = habit_type, habit_id = habit_id)
-    
     if habit_type == "steps":
         steps_habit = step.Step.get_one_step_by_step_id(habit_id)
         return render_template("update_habit.html", steps_habit = steps_habit, habit_type = habit_type, habit_id = habit_id)
@@ -76,7 +74,19 @@ def update_habit_process_submitted(habit_type, habit_id):
 def account_details():
     if 'user_id' not in session:
         return redirect('/')
-    return "account details template"
+    
+    user_info = user.User.get_user_by_user_id_logged_in(session['user_id'])
+    gym_habits = gym.Gym.get_all_gym_habits_with_user_by_user_id(session["user_id"])
+    sleep_habits = sleep.Sleep.get_all_sleep_habits_by_user_id(session["user_id"])
+    steps_habits = step.Step.get_all_step_habits_by_user_id(session["user_id"])
+    return render_template("account.html", gym_habits = gym_habits,  sleep_habits = sleep_habits, steps_habits = steps_habits, user_info = user_info)
+
+#? set up for later to update user data
+# @app.post("/account/update")
+# def account_details():
+#     if 'user_id' not in session:
+#         return redirect('/')
+#     return render_template("account.html")
 
 @app.get("/habit/create")
 def create_habit_page():

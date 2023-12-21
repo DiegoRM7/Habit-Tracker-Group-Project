@@ -12,7 +12,7 @@
 <body>
     <div class="container mx-auto my-auto px-5 pb-3 pt-3">
         <nav class="nav-bar row align-items-center mb-4">
-            <h1 class="col-6 text-start fw-bold top-title">Habit Details!</h1>
+            <h1 class="col-6 text-start fw-bold top-title">{{user_info.first_name.capitalize()}}'s Account Details!</h1>
             <div class="col-6 nav-pills d-md-inline-flex justify-content-end">
                 <a href="/dashboard" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Dashboard</a>
                 <a href="/habit/create" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Create Habit</a>
@@ -22,7 +22,7 @@
         </nav>
         <div class="row">
 
-            {% with messages = get_flashed_messages(category_filter=["success_habit_updated"]) %}
+            <!-- {% with messages = get_flashed_messages(category_filter=["success_habit_updated"]) %}
             {% if messages %}
             <div class="p-3 my-1 rounded bg-success-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
                 {% for message in messages %}
@@ -30,24 +30,32 @@
                 {% endfor %}
             </div>
             {% endif %}
-            {% endwith %}
+            {% endwith %} -->
 
             <div class="col-md-6 flex-column d-flex align-items-center">
-                <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
-                    <div class="text-center justify-content-center row p-3">
-                        {% if habit_type == "gym" %}
-                        <h1>Tracked <span class="text-decoration-underline">Gym</span> Habit #{{gym_habit.gym_id}}</h1>
-                        {% endif %}
-                        {% if habit_type == "sleep" %}
-                        <h1>Tracked <span class="text-decoration-underline">Sleep</span> Habit #{{sleep_habit.sleep_id}}</h1>
-                        {% endif %}
-                        {% if habit_type == "steps" %}
-                        <h1>Tracked <span class="text-decoration-underline">Steps</span> Habit #{{steps_habit.step_id}}</h1>
-                        {% endif %}
-                        <div class="row justify-content-around">
-                            <a class="col-4 mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-25" href="/habit/update/{{habit_type}}/{{habit_id}}">Edit</a>
-                            <a class="col-4 mt-2 fw-bold btn btn-danger rounded bg-gradient bg-danger hover-shadow w-25" href="/habit/delete/{{habit_type}}/{{habit_id}}">Delete</a>
-                        </div>
+                <div class="p-5 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
+                    <div class="row text-center justify-content-center">
+                        <p>Habit's Details</p>
+                        <p class="fw-bold">plan on making this show all the habits details</p>
+                        <p class="fw-bold">or could show just the id's of each as links to be viewed when they're clicked</p>
+                        <table class="table table-striped table-dark text-center">
+                            <thead>
+                                <tr>
+                                    <th>Sleep</th>
+                                    <th>Steps</th>
+                                    <th>Gym</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in range(3) %}
+                                <tr>
+                                    <th>test</th>
+                                    <td>test</td>
+                                    <td>test</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -77,54 +85,31 @@
             <div class="col-md-6 flex-column d-flex align-items-center">
                 <div class="p-3 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
                     <div class="text-center justify-content-center row p-3">
-                        {% if habit_type == "sleep" %}
                         <p>
-                            <span class="fw-bold">Sleep quality (1 - 5 rating): </span>
-                            {{sleep_habit.quality}}
+                            <span class="fw-bold">First Name: </span>
+                            {{user_info.first_name}}
                         </p>
                         <p>
-                            <span class="fw-bold">Amount of hours slept: </span>
-                            {{sleep_habit.hours}}
+                            <span class="fw-bold">Last Name: </span>
+                            {{user_info.last_name}}
                         </p>
                         <p>
-                            <span class="fw-bold">Went to sleep at: </span>
-                            {{sleep_habit.sleep_start.strftime("%B, %d %Y %I:%M %p")}}
+                            <span class="fw-bold">UserName: </span>
+                            {{user_info.username}}
                         </p>
                         <p>
-                            <span class="fw-bold">Woke up at: </span>
-                            {{sleep_habit.sleep_stop.strftime("%B, %d %Y %I:%M %p")}}
-                        </p>
-                        {% endif %}
-
-                        {% if habit_type == "steps" %}
-                        <p>
-                            <span class="fw-bold">Tracked steps: </span>
-                            {{steps_habit.amount}}
+                            <span class="fw-bold">Location: </span>
+                            {{user_info.location}}
                         </p>
                         <p>
-                            <span class="fw-bold">Steps were recorded at location: </span>
-                            {{steps_habit.location}}
-                        </p>
-                        {% endif %}
-
-                        {% if habit_type == "gym" %}
-                        <p>
-                            <span class="fw-bold">Amount of reps during session: </span>
-                            {{gym_habit.reps}}
+                            <span class="fw-bold">Email: </span>
+                            {{user_info.email}}
                         </p>
                         <p>
-                            <span class="fw-bold">Hours for workout to finish: </span>
-                            {{gym_habit.hours}}
+                            <span class="fw-bold">Password: </span>
+                            <!-- {{user_info.password}} -->
+                            **********
                         </p>
-                        <p>
-                            <span class="fw-bold">Started Exercising at: </span>
-                            {{gym_habit.gym_start.strftime("%B, %d %Y %I:%M %p")}}
-                        </p>
-                        <p>
-                            <span class="fw-bold">Stopped Exercising at: </span>
-                            {{gym_habit.gym_stop.strftime("%B, %d %Y %I:%M %p")}}
-                        </p>
-                        {% endif %}
                     </div>
                 </div>
             </div>
