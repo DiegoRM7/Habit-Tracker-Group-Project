@@ -75,8 +75,8 @@ class Step:
                 UPDATE steps
                 SET
                 amount = %(amount)s,
-                location = %(location)s,
-                WHERE steps_id = %(steps_id)s;
+                location = %(location)s
+                WHERE step_id = %(step_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
@@ -95,13 +95,22 @@ class Step:
     def validate_step_habits(data):
         STEP_LOCATION_REGEX = re.compile(r'^[^-0-9]+$')
         is_valid = True
-        if int(data['amount']) < 1:
-            flash("Please enter a step amount greater than 0, lets go knees to chest!!!","creating_steps_habit")
+        # amount
+        if data["amount"]:
+            if int(data['amount']) < 1:
+                flash("Please enter a step amount greater than 0, lets go knees to chest!!!","creating_steps_habit")
+                is_valid = False
+        if not data["amount"]:
+            flash("Please enter an amount, it was blank.","creating_steps_habit")
             is_valid = False
-        if len(data['location']) < 2 :
-            flash("Please enter the location your steps occured","creating_steps_habit")
+        #  location
+        if data["location"]:
+            if len(data['location']) < 2 :
+                flash("Please enter the location your steps occurred","creating_steps_habit")
+                is_valid = False
+        if not data["location"]:
+            flash("No location entered, please write one!","creating_steps_habit")
             is_valid = False
         if not STEP_LOCATION_REGEX.match(data['location']):
             is_valid = False
-            return False
         return is_valid

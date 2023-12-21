@@ -79,10 +79,10 @@ class Gym:
         query = """
                 UPDATE gym
                 SET
-                reps = %(rep)s,
+                reps = %(reps)s,
                 hours = %(hours)s,
                 gym_start = %(gym_start)s,
-                gym_stop = %(gym_stop)s,
+                gym_stop = %(gym_stop)s
                 WHERE gym_id = %(gym_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query,data)
@@ -100,11 +100,26 @@ class Gym:
     @staticmethod
     def validate_user_gym_habits(data):
         is_valid = True
-        if int(data['reps']) < 1:
-            flash("Failed rep? Please enter a rep count greater than 0, or decrease the weight until you can manage one repitition","creating_gym_habit")
-            is_valid = False
-        if int(data['hours']) < 1:
-            flash("hours must be great than 0, please enter a whole number","creating_gym_habit")
-            is_valid = False
+        if data["reps"]:
+            if int(data['reps']) < 1:
+                flash("Failed rep? Please enter a rep count greater than 0, or decrease the weight until you can manage one repitition","creating_gym_habit")
+                is_valid = False
+        if not data["reps"]:
+                flash("No rep range entered","creating_gym_habit")
+                is_valid = False
+        if data["hours"]:
+            if int(data['hours']) < 1:
+                flash("hours must be great than 0, please enter a whole number","creating_gym_habit")
+                is_valid = False
+        if not data["hours"]:
+                flash("No hours entered!","creating_gym_habit")
+                is_valid = False
+        # ! missing to check if datetime for start / stop are empty or not
+        # if not DATE_TIME_REGEX.match(['gym_start']):
+        #     is_valid = False
+        #     flash("Please enter a valid date/time for Time Started Gym Session")
+        # if not DATE_TIME_REGEX.match(['gym_stop']):
+        #     flash("Please enter a valid date/time for Time Ended Gym Session")
+        #     is_valid = False
         return is_valid
 

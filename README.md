@@ -88,31 +88,39 @@
   - [x] logout button put on all pages (update and create page added)
 - [x] FE dashboard tables show
   - [x] FE all habit data shows in all tables
-    - [ ] give a certain height to each table so it can be scrollable and not take up whole page
-      - [ ] FE table rows to be clickable themselves to get to the view pages
+    - [ ] STRETCH: give a certain height to each table so it can be scrollable and not take up whole page
+      - [ ] STRETCH: FE table rows to be clickable themselves to get to the view pages
 - [x] BE create validation to make sure user cannot open a url link to any page unless they are signed in (have a session user_id)
-- [ ] BE update functionality for each habit
-  - [ ] validations for update inputs (they're pre-filled with data, they should be able to put the same data)
+- [x] BE update functionality for each habit
+  - [x] BE queries/model
+  - [x] BE routing/controller 1 for all habits based on habit_type & habit_id
+  - [x] FE update page to show only one table
+  - [x] validations for update inputs (they're pre-filled with data, they should be able to put the same data)
 - [x] FE create view page
   - [x] all appropriate data for habit selected shows on page
   - [x] FE show delete button on details page
   - [x] BE route delete button to controller to work
 - [x] BE create view page (routing shows up based on habit.id and queries based on habit.id as well)
   - [x] href=/habit/view/<habit_type>/{{ habit.id }} --> route
-  - [ ] only show EDIT for users that own that habit (with jinja2)
-  - [ ] only show DELETE for users that own that habit (with jinja2)
-  - [ ] only let users that own that habit be able to DELETE THAT HABIT THROUGH THE URL
+  - [ ] STRETCH: only show EDIT for users that own that habit (with jinja2)
+  - [ ] STRETCH: only show DELETE for users that own that habit (with jinja2)
+  - [ ] MVP: only let users that own that habit be able to DELETE THAT HABIT THROUGH THE URL
     - [ ] validations?
 - [x] BE delete functionality ROUTE for each habit
 - [x] BE delete functionality MODELS for each habit
-  - [ ] add validations
+  - [ ] add validations?
   - [ ] check logged in user for increased route security?
 - [x] BE join queries tests to show data on html pages
-- [ ] FE account page (including all habits from that user)
-  - [ ] BE query to bring all habits of one user
-- [ ] FE password reset pop message on reset button (we have sent an message to your email detailing how to reset your password at [user's email])
-  - [ ] BE query to fulfill showing all user data from current logged on user.
-- [ ] BE update functionality for user data
+- [x] FE account page layout
+  - [ ] BE query to join all habits of one user with user_id
+  - [ ] including all habits data from that user on the table
+  - [x] all user data shows on right side
+- [ ] STRETCH: FE password reset pop message on reset button on account page (we have sent an message to your email detailing how to reset your password at [user's email])
+  - [ ] STRETCH: BE query to fulfill showing all user data from current logged on user.
+- [ ] STRETCH: BE update functionality for user data
+- [ ] STRETCH: animations for the FE text of dashboard
+- [ ] STRETCH: animations for the FE table of dashboard
+- [ ] STRETCH: fix FE dashboard padding on table div
 
 ## Product Backlog / Stretch Goal Features:
   * API’s:

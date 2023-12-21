@@ -28,3 +28,10 @@ function displayForm(inputContainerForHabitName) {
     var inputs = document.getElementById(inputContainerForHabitName);
     inputs.className = "row fade-in-text justify-content-center";
 }
+// on update page: trying to delete other forms around it when one is shown or to move the side forms to the middle if possible
+function centerTheSideForms(sideForm) {
+    var movableForm = document.querySelector(sideForm)
+    movableForm.style.left = "50%";
+    movableForm.style.top = "50%";
+    document.getElementById("my-element").remove();
+}
