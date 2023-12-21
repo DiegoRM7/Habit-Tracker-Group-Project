@@ -119,11 +119,6 @@ def delete_habit(habit_type, habit_id):
 
 
 
-
-
-
-
-
 # Notes:
 # 1 - Use meaningful names
 # 2 - Do not overwrite function names

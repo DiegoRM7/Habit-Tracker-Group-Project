@@ -26,7 +26,7 @@ def create_step_habit_form_process():
 #         return redirect("/habit/update")
 #     return redirect("/habit/update")
 
-# todo dashboard needs to display habits in order to fulfill habit_id 
+
 
 
 

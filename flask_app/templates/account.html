@@ -36,8 +36,6 @@
                 <div class="p-5 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
                     <div class="row text-center justify-content-center">
                         <p>Habit's Details</p>
-                        <p class="fw-bold">plan on making this show all the habits details</p>
-                        <p class="fw-bold">or could show just the id's of each as links to be viewed when they're clicked</p>
                         <table class="table table-striped table-dark text-center">
                             <thead>
                                 <tr>
@@ -47,14 +45,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for i in range(3) %}
-                                <tr>
-                                    <th>test</th>
-                                    <td>test</td>
-                                    <td>test</td>
-                                </tr>
-                                {% endfor %}
+                                    <tr>
+                                        <td>
+                                            {% for sleep_habit in sleep_habits %}
+                                                    <a href="/habit/details/sleep/{{sleep_habit.sleep_id}}"">{{ sleep_habit.created_at.strftime("%B, %d %Y %I:%M %p") }}</a><br>
+                                                    <hr>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for steps_habit in steps_habits %}
+                                                    <a href="/habit/details/steps/{{steps_habit.step_id}}"">{{ steps_habit.created_at.strftime("%B, %d %Y %I:%M %p") }}</a><br>
+                                                    <hr>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for gym_habit in gym_habits %}
+                                                    <a href="/habit/details/gym/{{gym_habit.gym_id}}">{{ gym_habit.created_at.strftime("%B, %d %Y %I:%M %p") }}</a><br>
+                                                    <hr>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -103,8 +115,25 @@
                         </p>
                         <p>
                             <span class="fw-bold">Email: </span>
-                            {{user_info.email}}
+                            
+                            <a onclick="myFunction()">{{user_info.email}}</a>
                         </p>
+
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  let text;
+  let person = prompt("Please verify your email address:",);
+  if (person == null || person == "") {
+    text = "User cancelled password reset.";
+  } else {
+    text = "An email has been sent to " + person + "if it exists in the database";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
                         <p>
                             <span class="fw-bold">Password: </span>
                             <!-- {{user_info.password}} -->

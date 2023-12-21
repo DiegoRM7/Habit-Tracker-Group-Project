@@ -114,12 +114,11 @@ class Gym:
         if not data["hours"]:
                 flash("No hours entered!","creating_gym_habit")
                 is_valid = False
-        # ! missing to check if datetime for start / stop are empty or not
-        # if not DATE_TIME_REGEX.match(['gym_start']):
-        #     is_valid = False
-        #     flash("Please enter a valid date/time for Time Started Gym Session")
-        # if not DATE_TIME_REGEX.match(['gym_stop']):
-        #     flash("Please enter a valid date/time for Time Ended Gym Session")
-        #     is_valid = False
+        if not data["gym_start"]:
+            flash("You forgot to add the time your workout started","creating_gym_habit")
+            is_valid = False
+        if not data["gym_end"]:
+            flash("Your forgot to add the time your workout ended", "creating_gym_habit")
+            is_valid = False
         return is_valid
 
