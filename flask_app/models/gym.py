@@ -71,7 +71,6 @@ class Gym:
         if not results:
             return []
         return results
-# ! Uriah: works in mySQL, need to test in flask ^
 
 # ? Update
     @classmethod
@@ -91,19 +90,15 @@ class Gym:
 # ? Delete
     @classmethod
     def delete_gym(cls,gym_id):
-        # ! add validations when ready
-        # ! check logged in user for increased route security?
         query = """
                 DELETE FROM gym
                 WHERE gym_id = %(gym_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query, {'gym_id' : gym_id})
-        # ! will eventually return True for validation purposes
 
 # ? Gym_Validation
     @staticmethod
     def validate_user_gym_habits(data):
-        DATE_TIME_REGEX = re.compile(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$')
         is_valid = True
         if int(data['reps']) < 1:
             flash("Failed rep? Please enter a rep count greater than 0, or decrease the weight until you can manage one repitition","creating_gym_habit")
@@ -111,13 +106,5 @@ class Gym:
         if int(data['hours']) < 1:
             flash("hours must be great than 0, please enter a whole number","creating_gym_habit")
             is_valid = False
-        # if not DATE_TIME_REGEX.match(['gym_start']):
-        #     is_valid = False
-        #     flash("Please enter a valid date/time for Time Started Gym Session")
-        # if not DATE_TIME_REGEX.match(['gym_stop']):
-        #     flash("Please enter a valid date/time for Time Ended Gym Session")
-        #     is_valid = False
-                
         return is_valid
 
-        # ! Uriah: validate hours, gym start/stop with same regex? might need another regex to ensure proper time inputs(start/stop)
