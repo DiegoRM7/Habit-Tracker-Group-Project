@@ -26,6 +26,8 @@ class Sleep:
     # ? Create
     @classmethod
     def create_sleep_habit(cls, sleep_data):
+        if not cls.validate_user_sleep_habits(sleep_data):
+            return False
         query = """
                 INSERT INTO sleep (hours, quality, sleep_start, sleep_stop, user_id)
                 VALUES (%(hours)s, %(quality)s, %(sleep_start)s, %(sleep_stop)s, %(user_id)s)
@@ -106,6 +108,7 @@ class Sleep:
     # ? Validation
     @staticmethod
     def validate_user_sleep_habits(data):
+        is_valid = True
         if data["hours"]:
             if int(data["hours"]) < 1:
                 flash(
@@ -126,27 +129,29 @@ class Sleep:
         if not data["quality"]:
             flash("No quality entered!", "creating_sleep_habit")
             is_valid = False
-        if data["sleep_start"]:
-            if int(data["sleep_start"]) < 1:
-                flash(
-                    "must enter time to track sleep_start, please enter a tracked sleep session over 0 hours.",
-                    "creating_sleep_habit",
-                )
-                is_valid = False
+        # ?? tested and error occurring when creating a gym habit and same for the sleep habit
+        # if data["sleep_start"]:
+        #     if int(data["sleep_start"]) < 1:
+        #         flash(
+        #             "must enter time to track sleep_start, please enter a tracked sleep session over 0 hours.",
+        #             "creating_sleep_habit",
+        #         )
+        #         is_valid = False
         if not data["sleep_start"]:
-            flash("No hours entered", "creating_sleep_habit")
+            flash("No sleep start time entered", "creating_sleep_habit")
             is_valid = False
-        if data["sleep_stop"]:
-            if int(data["sleep_stop"]) < 1:
-                flash(
-                    "Not enough hours slept, please enter a tracked sleep session over 0 hours.",
-                    "creating_sleep_habit",
-                )
-                is_valid = False
+        # ?? tested and error occurring when creating a gym habit and same for the sleep habit
+        # if data["sleep_stop"]:
+        #     if int(data["sleep_stop"]) < 1:
+        #         flash(
+        #             "Not enough hours slept, please enter a tracked sleep session over 0 hours.",
+        #             "creating_sleep_habit",
+        #         )
+        #         is_valid = False
         if not data["sleep_stop"]:
-            flash("No hours entered", "creating_sleep_habit")
+            flash("No sleep stop time entered", "creating_sleep_habit")
             is_valid = False
-        # ! missing to check if datetime for start / stop are empty or not
+        return is_valid
 
     # todo quality input type int (1-5 rating scale)
     # todo  hours int: 1-24(exclude negative int and 0)
