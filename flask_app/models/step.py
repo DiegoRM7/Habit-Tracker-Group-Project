@@ -75,8 +75,8 @@ class Step:
                 UPDATE steps
                 SET
                 amount = %(amount)s,
-                location = %(location)s,
-                WHERE steps_id = %(steps_id)s;
+                location = %(location)s
+                WHERE step_id = %(step_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query,data)
         # ! will eventually return True for validation purposes
