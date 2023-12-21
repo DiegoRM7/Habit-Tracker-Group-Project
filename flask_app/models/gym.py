@@ -135,23 +135,23 @@ class Gym:
         if data["gym_start"]:
             if int(data["gym_start"]) < 1:
                 flash(
-                    "hours must be great than 0, please enter a whole number",
+                    "hours must be greater than 0, please enter a whole number",
                     "creating_gym_habit",
                 )
                 is_valid = False
         if not data["gym_start"]:
-            flash("No gym_start entered!", "creating_gym_habit")
+            flash("No gym start entered!", "creating_gym_habit")
             is_valid = False
-        if data["gym_stop"]:
+        if not data["gym_stop"]:
+            flash("No gym stop entered!", "creating_gym_habit")
+            is_valid = False
+        elif data["gym_stop"]:
             if int(data["gym_stop"]) < 1:
                 flash(
-                    "gym_stop must be great than 0, please enter a whole number",
+                    "gym stop must be greater than 0, please enter a whole number",
                     "creating_gym_habit",
                 )
                 is_valid = False
-        if not data["gym_stop"]:
-            flash("No gym_stop entered!", "creating_gym_habit")
-            is_valid = False
         # ! missing to check if datetime for start / stop are empty or not
         # if not DATE_TIME_REGEX.match(['gym_start']):
         #     is_valid = False

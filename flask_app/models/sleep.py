@@ -106,6 +106,7 @@ class Sleep:
     # ? Validation
     @staticmethod
     def validate_user_sleep_habits(data):
+        is_valid = True
         if data["hours"]:
             if int(data["hours"]) < 1:
                 flash(
@@ -129,7 +130,7 @@ class Sleep:
         if data["sleep_start"]:
             if int(data["sleep_start"]) < 1:
                 flash(
-                    "must enter time to track sleep_start, please enter a tracked sleep session over 0 hours.",
+                    "must enter time greater than 0.",
                     "creating_sleep_habit",
                 )
                 is_valid = False
@@ -146,6 +147,7 @@ class Sleep:
         if not data["sleep_stop"]:
             flash("No hours entered", "creating_sleep_habit")
             is_valid = False
+        return is_valid
         # ! missing to check if datetime for start / stop are empty or not
 
     # todo quality input type int (1-5 rating scale)
