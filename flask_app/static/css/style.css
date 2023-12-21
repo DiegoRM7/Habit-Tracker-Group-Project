@@ -48,11 +48,11 @@ body {
 /* ?? Fade in animation for the form's (on the create page) */
 
 .fade-in-text {
-    -ms-animation: fadeIn 1s ease;
-    -webkit-animation: fadeIn 1s ease;
-    -moz-animation: fadeIn 1s ease;
-    -o-animation: fadeIn 1s ease;
-    animation: fadeIn 1s ease;
+    -ms-animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    animation: fadeIn 1s;
     position: relative;
 }
 
