@@ -29,16 +29,9 @@ class User:
 
     # Create Users Models
     @classmethod
-<<<<<<< HEAD
-    def create_user(cls, user_data):
-        """this method does not exist"""
-        # if not cls.validate_user(user_data):
-        #     return False
-=======
     def create_user(cls,user_data):
         if not cls.validate_user_registration(user_data):
             return False
->>>>>>> main
         user_data = user_data.copy()
         user_data["password"] = bcrypt.generate_password_hash(user_data["password"])
         query = """
@@ -76,31 +69,10 @@ class User:
         result = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
         print("_____________________", result)
         return result
-<<<<<<< HEAD
-
-    # Update Users Models
-    # =======
-    # ?? Update Users Models
-    # >>>>>>> main
-
-    # ?? Delete Users Models
-
-    # ?? user_login
-
-    @classmethod
-    def login(cls, data):
-        # ? Diego: instantiated object once, then again in login method when it's being called on. fixed, test if works after.
-        this_user = User.get_user_by_email(data["email"])
-=======
     
-#?? Update Users Models
-#?? Delete Users Models
-
-#?? user_login
     @classmethod
     def login(cls, data):
         this_user = User.get_user_by_email(data['email'])
->>>>>>> main
         if this_user:
             if bcrypt.check_password_hash(this_user.password, data["password"]):
                 session["user_id"] = this_user.id

@@ -19,6 +19,7 @@ def create_user():
         return redirect("/dashboard")
     print("There was an error creating a user for some reason")
     return redirect("/")
+
 @app.get("/dashboard")
 def dashboard():
     if 'user_id' not in session:
