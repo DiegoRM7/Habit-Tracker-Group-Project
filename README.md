@@ -114,7 +114,7 @@
 - [x] FE account page layout
   - [ ] BE query to join all habits of one user with user_id
   - [ ] including all habits data from that user on the table
-  - [ ] all user data shows on right side
+  - [x] all user data shows on right side
 - [ ] STRETCH: FE password reset pop message on reset button on account page (we have sent an message to your email detailing how to reset your password at [user's email])
   - [ ] STRETCH: BE query to fulfill showing all user data from current logged on user.
 - [ ] STRETCH: BE update functionality for user data
