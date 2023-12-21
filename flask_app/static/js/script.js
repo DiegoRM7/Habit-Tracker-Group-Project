@@ -35,3 +35,16 @@ function centerTheSideForms(sideForm) {
     movableForm.style.top = "50%";
     document.getElementById("my-element").remove();
 }
+
+// to show a password reset button and popup
+function resetPasswordPopUp() {
+    let text;
+    let person = prompt("Please verify your email address:",);
+    if (person == null || person == "") {
+        text = "User cancelled password reset.";
+    } else {
+        text = "An email has been sent to " + person + "if it exists in the database";
+    }
+    document.getElementById("demo").innerHTML = text;
+    document.getElementById("demo").style = "color: red";
+}

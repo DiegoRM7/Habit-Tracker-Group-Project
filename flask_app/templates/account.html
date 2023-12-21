@@ -16,7 +16,7 @@
             <div class="col-6 nav-pills d-md-inline-flex justify-content-end">
                 <a href="/dashboard" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Dashboard</a>
                 <a href="/habit/create" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Create Habit</a>
-                <a href="/account/details" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
+                <a href="/account/details" class="btn btn-outline-dark rounded-0 hover-shadow bg-primary-subtle text-black fw-bold px-3">Account</a>
                 <a href="/logout" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Logout</a>
             </div>
         </nav>
@@ -35,8 +35,8 @@
             <div class="col-md-6 flex-column d-flex align-items-center">
                 <div class="p-5 bg-opacity-75 bg-light border-1 border-dark-subtle border shadow fade-in-start-page-2nd">
                     <div class="row text-center justify-content-center">
-                        <p>Habit's Details</p>
-                        <table class="table table-striped table-dark text-center">
+                        <p>All Your Habits</p>
+                        <table class="table table-striped-columns table-dark table-bordered table-group-divider table-hover text-center">
                             <thead>
                                 <tr>
                                     <th>Sleep</th>
@@ -66,7 +66,6 @@
                                         </td>
                                     </tr>
                             </tbody>
-
                         </table>
                     </div>
                 </div>
@@ -115,25 +114,10 @@
                         </p>
                         <p>
                             <span class="fw-bold">Email: </span>
-                            
-                            <a onclick="myFunction()">{{user_info.email}}</a>
+                            {{user_info.email}}
                         </p>
-
-
-<p id="demo"></p>
-
-<script>
-function myFunction() {
-  let text;
-  let person = prompt("Please verify your email address:",);
-  if (person == null || person == "") {
-    text = "User cancelled password reset.";
-  } else {
-    text = "An email has been sent to " + person + "if it exists in the database";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
-</script>
+                        <button class="my-2 fw-bold btn btn-warning rounded bg-gradient bg-warning hover-shadow w-25" onclick="resetPasswordPopUp()">Reset Password</button>
+                        <p id="demo"></p>
                         <p>
                             <span class="fw-bold">Password: </span>
                             <!-- {{user_info.password}} -->
