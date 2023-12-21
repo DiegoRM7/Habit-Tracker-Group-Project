@@ -1,0 +1,1 @@
+i am on Mac Os sonoma i can not create tables using the .mwb file. please provide a Sql script to create schema and tables 
