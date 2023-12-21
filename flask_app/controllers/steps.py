@@ -16,14 +16,15 @@ def create_step_habit_form_process():
     # will redirect to ("/habit/details") later on when we have page made
     return redirect("/habit/create")
 
-@app.post("/habit/update/steps/process")
-def update_habit_form_process():
-    if 'user_id' not in session:
-        return redirect('/')
-    if step.Step.validate_step_habits(request.form):
-        step.Step.update_steps(request.form)
-        return redirect("/habit/update")
-    return redirect("/habit/update")
+#? now on gym controller to route for all type of habits in one route based on(habit_type/habit_id)
+# @app.post("/habit/update/steps/process")
+# def update_habit_form_process():
+#     if 'user_id' not in session:
+#         return redirect('/')
+#     if step.Step.validate_step_habits(request.form):
+#         step.Step.update_steps(request.form)
+#         return redirect("/habit/update")
+#     return redirect("/habit/update")
 
 # todo dashboard needs to display habits in order to fulfill habit_id 
 

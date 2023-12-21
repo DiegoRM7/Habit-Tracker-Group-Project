@@ -79,7 +79,7 @@ class Sleep:
                 UPDATE sleep
                 SET
                 hours = %(hours)s,
-                quality = %(quality)s,
+                quality = %(quality)s
                 WHERE sleep_id = %(sleep_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query,data)

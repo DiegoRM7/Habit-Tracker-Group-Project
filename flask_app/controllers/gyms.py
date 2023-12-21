@@ -1,12 +1,12 @@
 """"this file is going to be the gym controllers file"""
 """all routes and controllers have been added in its entirely"""
 from flask_app import app
-from flask import render_template, redirect, request, session
+from flask import render_template, redirect, request, session, flash
 from flask_app.models import gym, user, sleep, step # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
-# ? for habit type string, input this into each view jinja link respective to each habit type
+#? for habit type string, input this into each view jinja link respective to each habit type
 @app.get("/habit/details/<string:habit_type>/<int:habit_id>")
 def habit_details(habit_type, habit_id):
     if 'user_id' not in session:
@@ -19,7 +19,6 @@ def habit_details(habit_type, habit_id):
     # habit_type would equal the name of habit (ex:gym) which then you can say in jinja if habit_type == gym -> [do this code]
     if habit_type == "gym":
         gym_habit = gym.Gym.get_one_gym_by_gym_id(habit_id)
-        print(gym_habit)
         return render_template("habit_details.html", gym_habit = gym_habit, habit_type = habit_type, habit_id = habit_id)
     
     if habit_type == "sleep":
@@ -30,11 +29,48 @@ def habit_details(habit_type, habit_id):
         steps_habit = step.Step.get_one_step_by_step_id(habit_id)
         return render_template("habit_details.html", steps_habit = steps_habit, habit_type = habit_type, habit_id = habit_id)
 
-@app.get("/habit/update")
-def update_habit_page():
+#? only can get to by the habit details page that already is serving these two habit_values parameters
+#! LOAD PAGE
+@app.get("/habit/update/<string:habit_type>/<int:habit_id>")
+def update_habit_page(habit_type, habit_id):
     if 'user_id' not in session:
         return redirect('/')
-    return render_template("update_habit.html")
+    
+    # same concept as the routing that serves the habit details page above ^
+    if habit_type == "gym":
+        gym_habit = gym.Gym.get_one_gym_by_gym_id(habit_id)
+        return render_template("update_habit.html", gym_habit = gym_habit, habit_type = habit_type, habit_id = habit_id)
+    
+    if habit_type == "sleep":
+        sleep_habit = sleep.Sleep.get_one_sleep_by_sleep_id(habit_id)
+        return render_template("update_habit.html", sleep_habit = sleep_habit, habit_type = habit_type, habit_id = habit_id)
+    
+    if habit_type == "steps":
+        steps_habit = step.Step.get_one_step_by_step_id(habit_id)
+        return render_template("update_habit.html", steps_habit = steps_habit, habit_type = habit_type, habit_id = habit_id)
+    
+#! PROCESS SUBMIT FORM
+# same concept as the routing that serves the habit details page above ^
+@app.post("/habit/update/process/<string:habit_type>/<int:habit_id>")
+def update_habit_process_submitted(habit_type, habit_id):
+    if 'user_id' not in session:
+        return redirect('/')
+    
+    if habit_type == "gym":
+        if gym.Gym.update_gym(request.form):
+            flash(f"{habit_type.capitalize()} habit with {habit_type}_id { habit_id } has been updated!, success_habit_updated")
+        gym_habit = gym.Gym.get_one_gym_by_gym_id(habit_id)
+        return render_template("habit_details.html", gym_habit = gym_habit, habit_type = habit_type, habit_id = habit_id)
+    if habit_type == "sleep":
+        if sleep.Sleep.update_sleep(request.form):
+            flash(f"{habit_type.capitalize()} habit with {habit_type}_id { habit_id } has been updated!, success_habit_updated")
+        sleep_habit = sleep.Sleep.get_one_sleep_by_sleep_id(habit_id)
+        return render_template("habit_details.html", sleep_habit = sleep_habit, habit_type = habit_type, habit_id = habit_id)
+    if habit_type == "steps":
+        if step.Step.update_steps(request.form):
+            flash(f"{habit_type.capitalize()} habit with {habit_type}_id { habit_id } has been updated!, success_habit_updated")
+        steps_habit = step.Step.get_one_step_by_step_id(habit_id)
+        return render_template("habit_details.html", steps_habit = steps_habit, habit_type = habit_type, habit_id = habit_id)
 
 @app.get("/account/details")
 def account_details():

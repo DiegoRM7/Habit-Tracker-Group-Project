@@ -80,10 +80,10 @@ class Gym:
         query = """
                 UPDATE gym
                 SET
-                reps = %(rep)s,
+                reps = %(reps)s,
                 hours = %(hours)s,
                 gym_start = %(gym_start)s,
-                gym_stop = %(gym_stop)s,
+                gym_stop = %(gym_stop)s
                 WHERE gym_id = %(gym_id)s;
                 """
         return connectToMySQL(cls.db).query_db(query,data)
