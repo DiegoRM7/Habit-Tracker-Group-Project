@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Habit Tracker: Create Habit</title>
+    <title>Habit Tracker: Create</title>
 </head>
 <body>
     <div class="container mx-auto my-auto px-5 pb-3 pt-3">
@@ -17,6 +17,7 @@
                 <a href="/dashboard" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Dashboard</a>
                 <a href="/habit/create" class="btn btn-outline-dark rounded-0 hover-shadow bg-primary-subtle acttive text-black fw-bold px-3">Create Habit</a>
                 <a href="#" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Account</a>
+                <a href="/logout" class="btn btn-outline-dark rounded-0 hover-shadow bg-white text-black fw-bold px-3">Logout</a>
             </div>
         </nav>
             <div class="row">
@@ -26,8 +27,8 @@
                         <div class="text-center justify-content-center row p-3">
                             <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerGym')">Gym</button>
                             
-                            <!-- ?? validate empty inputs for creating a GYM habit -->
-                            <!-- {% with messages = get_flashed_messages(category_filter=["creating_gym_habit"]) %}
+                    <!-- ?? validate empty inputs for creating a GYM habit -->
+                            {% with messages = get_flashed_messages(category_filter=["creating_gym_habit"]) %}
                             {% if messages %}
                             <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
                                 {% for message in messages %}
@@ -35,7 +36,7 @@
                                 {% endfor %}
                             </div>
                             {% endif %}
-                            {% endwith %} -->
+                            {% endwith %}
                             
                             <!-- todo: here is where i've added the FORM ACTION ROUTE for GYM habit inputs-->
                             <form class="text-black" action="/habit/create/gym/process" method="post" enctype="multipart/form-data">
@@ -52,11 +53,11 @@
                                         <input class="form-control hover-shadow rounded-2 ms-2 border-black" type="number" name="hours" id="hours">
                                     </div>
                                     <div class="mt-3 form-input-inline fw-semibold">
-                                        <label for="gym_start">Time started Gym session: </label>
+                                        <label for="gym_start">Time Started Gym session: </label>
                                         <input class="form-control hover-shadow rounded-2 border-black ms-2" type="datetime-local" name="gym_start" id="gym_start">
                                     </div>
                                     <div class="mt-3 form-input-inline fw-semibold">
-                                        <label for="gym_end">Time ended Gym session: </label>
+                                        <label for="gym_end">Time Ended Gym session: </label>
                                         <input class="form-control hover-shadow rounded-2 border-black ms-2" type="datetime-local" name="gym_stop" id="gym_end">
                                     </div>
                                     <input class="mt-3 fw-bold btn btn-success rounded bg-gradient bg-success hover-shadow w-50" type="submit" value="Create">
@@ -95,8 +96,8 @@
 
                             <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerSleep')">Sleep</button>
 
-                            <!-- ?? validate empty inputs for creating a SLEEP habit -->
-                            <!-- {% with messages = get_flashed_messages(category_filter=["creating_sleep_habit"]) %}
+                    <!-- ?? validate empty inputs for creating a SLEEP habit -->
+                            {% with messages = get_flashed_messages(category_filter=["creating_sleep_habit"]) %}
                             {% if messages %}
                             <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
                                 {% for message in messages %}
@@ -104,7 +105,7 @@
                                 {% endfor %}
                             </div>
                             {% endif %}
-                            {% endwith %} -->
+                            {% endwith %}
 
                             <!-- todo: here is where i've added the FORM ACTION ROUTE for SLEEP habit inputs-->
                             <!-- still have to edit input names, copies from first one "gym" -->
@@ -140,7 +141,7 @@
                             <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerSteps')">Steps</button>
 
                             <!-- ?? validate empty inputs for creating a STEPS habit -->
-                            <!-- {% with messages = get_flashed_messages(category_filter=["creating_steps_habit"]) %}
+                            {% with messages = get_flashed_messages(category_filter=["creating_steps_habit"]) %}
                             {% if messages %}
                             <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
                                 {% for message in messages %}
@@ -148,7 +149,7 @@
                                 {% endfor %}
                             </div>
                             {% endif %}
-                            {% endwith %} -->
+                            {% endwith %}
 
                             <!-- todo: here is where i've added the FORM ACTION ROUTE for STEPS habit inputs-->
                             <!-- still have to edit input names, copies from first one "gym" -->

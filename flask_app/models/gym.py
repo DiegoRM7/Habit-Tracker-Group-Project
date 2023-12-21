@@ -11,7 +11,7 @@ bcrypt = Bcrypt(app)
 class Gym:
     db = "habit_tracker_schema"
     def __init__(self, data):
-        self.id = data['gym_id']
+        self.gym_id = data['gym_id']
         self.reps = data['reps']
         self.hours = data['hours']
         self.gym_start = data['gym_start']
@@ -20,32 +20,34 @@ class Gym:
         self.updated_at = data['updated_at']
         self.user_id = data['user_id'] # user that's tracking their gym session
 
-# ?? Create gym Models
-
+# ? Create
     @classmethod
     def create_gym_habit(cls,gym_data):
+        if not cls.validate_user_gym_habits(gym_data):
+            return False
         query = """
                 INSERT INTO gym (reps, hours, gym_start, gym_stop, user_id)
                 VALUES (%(reps)s, %(hours)s, %(gym_start)s, %(gym_stop)s, %(user_id)s)
                 ;"""
         gym_id = connectToMySQL(cls.db).query_db(query, gym_data)
-        print("gym_id:",gym_id)
-        print(query)
+        if not gym_id:
+            return []
         return gym_id
 
-# ?? Read gym Models
+# ? Read
     @classmethod
-    def get_gym_habits_by_habit_id(cls,gym_id):
+    def get_one_gym_by_gym_id(cls,gym_id): # to show on habit detail page
         query = """
                 SELECT *
                 FROM gym 
-                WHERE gym_id = %(gym_id)s
-                ;"""
-        results = connectToMySQL(cls.db).query_db(query, {"gym_id" : gym_id})
-        return cls(results)
+                WHERE gym_id = %(gym_id)s;
+                """
+        results = connectToMySQL(cls.db).query_db(query, {"gym_id": gym_id})
+        print(f"{results[0]}\n")
+        return cls(results[0])
 
     @classmethod
-    def get_all_gym_habits(cls):    # for one table in the dashboard
+    def get_all_gym_habits(cls):    # for one table in the dashboard going to be used after mvp
         query = """
                 SELECT *
                 FROM gym
@@ -58,7 +60,7 @@ class Gym:
         return gym_habit
 
     @classmethod
-    def get_all_gym_habits_with_user_by_user_id(cls, user_id):
+    def get_all_gym_habits_with_user_by_user_id(cls, user_id): # for one table in the dashboard
         query = """
                 SELECT * FROM gym 
                 JOIN user 
@@ -66,10 +68,12 @@ class Gym:
                 WHERE gym.user_id = %(user_id)s;
                 """
         results = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
+        if not results:
+            return []
         return results
 # ! Uriah: works in mySQL, need to test in flask ^
 
-# ?? Update Sleep Models
+# ? Update
     @classmethod
     def update_gym(cls, data):
         # ! add validations when ready
@@ -84,7 +88,7 @@ class Gym:
                 """
         return connectToMySQL(cls.db).query_db(query,data)
 
-#?? Delete Gym
+# ? Delete
     @classmethod
     def delete_gym(cls,gym_id):
         # ! add validations when ready
@@ -95,16 +99,33 @@ class Gym:
                 """
         return connectToMySQL(cls.db).query_db(query, {'gym_id' : gym_id})
         # ! will eventually return True for validation purposes
-    
-    # ?? Gym Validation
 
+# ? Gym_Validation
     @staticmethod
     def validate_user_gym_habits(data):
-        reps_regex = re.compile(r'^[1-9]\d*$')
+        DATE_TIME_REGEX = re.compile(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$')
         is_valid = True
-        if not reps_regex.match(data['reps']):
-            flash("Failed rep? Please enter a rep count greater than 0, or decrease the weigh until you can manage one repitition")
-            is_valid = False
+        if data["reps"]:
+            if int(data['reps']) < 1:
+                flash("Failed rep? Please enter a rep count greater than 0, or decrease the weight until you can manage one repitition","creating_gym_habit")
+                is_valid = False
+        if not data["reps"]:
+                flash("No rep range entered","creating_gym_habit")
+                is_valid = False
+        if data["hours"]:
+            if int(data['hours']) < 1:
+                flash("hours must be great than 0, please enter a whole number","creating_gym_habit")
+                is_valid = False
+        if not data["hours"]:
+                flash("No hours entered!","creating_gym_habit")
+                is_valid = False
+        # ! missing to check if datetime for start / stop are empty or not
+        # if not DATE_TIME_REGEX.match(['gym_start']):
+        #     is_valid = False
+        #     flash("Please enter a valid date/time for Time Started Gym Session")
+        # if not DATE_TIME_REGEX.match(['gym_stop']):
+        #     flash("Please enter a valid date/time for Time Ended Gym Session")
+        #     is_valid = False
         return is_valid
 
         # ! Uriah: validate hours, gym start/stop with same regex? might need another regex to ensure proper time inputs(start/stop)
