@@ -1,16 +1,18 @@
 ## Students info:
 
 * Name: Uriah Ballard
-   * LinkedIn: ....
-   * Role: BE = DB MySQL —> Models
+   * LinkedIn: LinkedIn.com/in/uriahballard
+   * Starting Role: BE = DB MySQL —> Models
 * Name: Darius Washington
    * LinkedIn: ....
-   * Role: BE = Routing / Controllers
+   * Starting Role: BE = Routing / Controllers
 * Name: Diego Millan
-   * LinkedIn: ....
-   * Role: FE = HTML / CSS / JS / Bootstrap
-
-* GitHub repo link: Habit Tracker Group Project
+   * LinkedIn: LinkedIn.com/in/diegorm27/
+   * Starting Role: FE = HTML / CSS / JS / Bootstrap
+    
+* After around Merge #3 role's were taken over fully by Uriah and Diego. Resposibilities were mixed between us from then as shown in the github commits/merge history.
+* GitHub repo link: <a href="https://github.com/DiegoRM7/Habit-Tracker-Group-Project">Habit Tracker Group Project<a>
+* This project was done and completed as an MVP within a week before DEMO/presentations.
 
 ### Project Name:
 
