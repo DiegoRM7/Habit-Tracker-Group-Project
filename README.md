@@ -1,13 +1,13 @@
 ## Students info:
 
 * Name: Uriah Ballard
-   * LinkedIn: LinkedIn.com/in/uriahballard
+   * LinkedIn: <a href="LinkedIn.com/in/uriahballard">LinkedIn.com/in/uriahballard</a>
    * Starting Role: BE = DB MySQL —> Models
 * Name: Darius Washington
    * LinkedIn: ....
    * Starting Role: BE = Routing / Controllers
 * Name: Diego Millan
-   * LinkedIn: LinkedIn.com/in/diegorm27/
+   * LinkedIn: <a href="LinkedIn.com/in/diegorm27">LinkedIn.com/in/diegorm27</a>
    * Starting Role: FE = HTML / CSS / JS / Bootstrap
     
 * After around Merge #3 role's were taken over fully by Uriah and Diego. Resposibilities were mixed between us from then as shown in the github commits/merge history.
