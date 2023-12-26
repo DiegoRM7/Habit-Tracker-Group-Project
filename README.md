@@ -54,34 +54,34 @@
       * Username
       * Password (stretch goal)
       * That habits inputs: sleep
-       * Hours
-       * Quality
-       * Time went to sleep
-       * Wake up time
+         * Hours
+         * Quality
+         * Time went to sleep
+         * Wake up time
 
 ## CRUD implementation:
   * Using MySQL for implementations.
   * Data we are using to Create, Read, Update, Delete and for which tables: EXAMPLE:
       * Users:
-       * First name
-       * Last name
-       * Email
-       * Location
-       * Password
+         * First name
+         * Last name
+         * Email
+         * Location
+         * Password
       * Sleep
-       * Hours
-       * Quality  (1-5 star rating)
-       * Sleep_start (going to sleep)
-       * Sleep_stop (waking up)
+         * Hours
+         * Quality  (1-5 star rating)
+         * Sleep_start (going to sleep)
+         * Sleep_stop (waking up)
       * Steps
-       * Amount (# of steps tracked in session)
-       * Location (City, St)
+         * Amount (# of steps tracked in session)
+         * Location (City, St)
       * Gym
-       * Reps  (num)
-       * Hours (in gym)
-       * Workout start (datetime-local)
-       * Workout end (datetime-local)
-       * Type Workout (chest, legs, etc) (not implemented)
+         * Reps  (num)
+         * Hours (in gym)
+         * Workout start (datetime-local)
+         * Workout end (datetime-local)
+         * Type Workout (chest, legs, etc) (not implemented)
 
 ## MVP CHECKLIST:
 - [x] FE logout button & BE functionality for dashboard
