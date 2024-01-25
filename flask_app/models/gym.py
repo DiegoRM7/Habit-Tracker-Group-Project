@@ -129,31 +129,26 @@ class Gym:
         if not data["hours"]:
             flash("No hours entered!", "creating_gym_habit")
             is_valid = False
-        if data["gym_start"]:
-            if int(data["gym_start"]) < 1:
-                flash(
-                    "hours must be great than 0, please enter a whole number",
-                    "creating_gym_habit",
-                )
-                is_valid = False
-        if not data["gym_start"]:
-            flash("No gym_start entered!", "creating_gym_habit")
-            is_valid = False
-        if data["gym_stop"]:
-            if int(data["gym_stop"]) < 1:
-                flash(
-                    "gym_stop must be great than 0, please enter a whole number",
-                    "creating_gym_habit",
-                )
-                is_valid = False
-        if not data["gym_stop"]:
-            flash("No gym_stop entered!", "creating_gym_habit")
-            is_valid = False
-
+        # ?? tested and error occurring when creating a gym habit and same for the sleep habit
+        # if data["gym_start"]:
+        #     if int(data["gym_start"]) < 1:
+        #         flash(
+        #             "hours must be great than 0, please enter a whole number",
+        #             "creating_gym_habit",
+        #         )
+        #         is_valid = False
+        # ?? tested and error occurring when creating a gym habit and same for the sleep habit
+        # if data["gym_stop"]:
+        #     if int(data["gym_stop"]) < 1:
+        #         flash(
+        #             "gym_stop must be great than 0, please enter a whole number",
+        #             "creating_gym_habit",
+        #         )
+        #         is_valid = False
         if not data["gym_start"]:
             flash("You forgot to add the time your workout started","creating_gym_habit")
             is_valid = False
-        if not data["gym_end"]:
+        if not data["gym_stop"]:
             flash("Your forgot to add the time your workout ended", "creating_gym_habit")
             is_valid = False
         return is_valid

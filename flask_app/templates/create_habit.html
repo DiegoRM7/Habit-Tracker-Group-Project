@@ -27,7 +27,7 @@
                         <div class="text-center justify-content-center row p-3">
                             <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerGym')">Gym</button>
                             
-                    <!-- ?? validate empty inputs for creating a GYM habit -->
+                            <!-- ?? validate empty inputs for creating a GYM habit -->
                             {% with messages = get_flashed_messages(category_filter=["creating_gym_habit"]) %}
                             {% if messages %}
                             <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">
@@ -96,7 +96,7 @@
 
                             <button class="mt-2 fw-bold btn btn-primary rounded bg-gradient bg-primary hover-shadow w-75" onclick="displayForm('inputContainerSleep')">Sleep</button>
 
-                    <!-- ?? validate empty inputs for creating a SLEEP habit -->
+                            <!-- ?? validate empty inputs for creating a SLEEP habit -->
                             {% with messages = get_flashed_messages(category_filter=["creating_sleep_habit"]) %}
                             {% if messages %}
                             <div class="p-3 my-1 rounded bg-danger-subtle bg-opacity-75 fw-semibold lh-1 hover-shadow flashes">

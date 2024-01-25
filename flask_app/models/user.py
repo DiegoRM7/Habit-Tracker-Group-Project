@@ -58,7 +58,6 @@ class User:
             return this_user
         return False
 
-    # <<<<<<< DiegoM
     @classmethod
     def get_user_by_user_id_logged_in(cls, user_id):
         query = """
@@ -67,8 +66,7 @@ class User:
                 WHERE id = %(user_id)s;
                 """
         result = connectToMySQL(cls.db).query_db(query, {"user_id": user_id})
-        print("_____________________", result)
-        return result
+        return result[0]
     
     @classmethod
     def login(cls, data):

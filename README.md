@@ -1,16 +1,18 @@
 ## Students info:
 
 * Name: Uriah Ballard
-   * LinkedIn: ....
-   * Role: BE = DB MySQL —> Models
+   * LinkedIn: <a href="https://www.linkedin.com/in/uriahballard/">LinkedIn.com/in/uriahballard</a>
+   * Starting Role: BE = DB MySQL —> Models
 * Name: Darius Washington
    * LinkedIn: ....
-   * Role: BE = Routing / Controllers
+   * Starting Role: BE = Routing / Controllers
 * Name: Diego Millan
-   * LinkedIn: ....
-   * Role: FE = HTML / CSS / JS / Bootstrap
-
-* GitHub repo link: Habit Tracker Group Project
+   * LinkedIn: <a href="https://www.linkedin.com/in/diegorm27/">LinkedIn.com/in/diegorm27</a>
+   * Starting Role: FE = HTML / CSS / JS / Bootstrap
+    
+* After around Merge #3 role's were taken over fully by Uriah and Diego. Resposibilities were mixed between us from then as shown in the github commits/merge history.
+* GitHub repo link: <a href="https://github.com/DiegoRM7/Habit-Tracker-Group-Project">Habit Tracker Group Project<a>
+* This project was done and completed as an MVP within a week before DEMO/presentations.
 
 ### Project Name:
 
@@ -52,34 +54,34 @@
       * Username
       * Password (stretch goal)
       * That habits inputs: sleep
-       * Hours
-       * Quality
-       * Time went to sleep
-       * Wake up time
+         * Hours
+         * Quality
+         * Time went to sleep
+         * Wake up time
 
 ## CRUD implementation:
   * Using MySQL for implementations.
   * Data we are using to Create, Read, Update, Delete and for which tables: EXAMPLE:
       * Users:
-       * First name
-       * Last name
-       * Email
-       * Location
-       * Password
+         * First name
+         * Last name
+         * Email
+         * Location
+         * Password
       * Sleep
-       * Hours
-       * Quality  (1-5 star rating)
-       * Sleep_start (going to sleep)
-       * Sleep_stop (waking up)
+         * Hours
+         * Quality  (1-5 star rating)
+         * Sleep_start (going to sleep)
+         * Sleep_stop (waking up)
       * Steps
-       * Amount (# of steps tracked in session)
-       * Location (City, St)
+         * Amount (# of steps tracked in session)
+         * Location (City, St)
       * Gym
-       * Reps  (num)
-       * Hours (in gym)
-       * Workout start (datetime-local)
-       * Workout end (datetime-local)
-       * Type Workout (chest, legs, etc) (not implemented)
+         * Reps  (num)
+         * Hours (in gym)
+         * Workout start (datetime-local)
+         * Workout end (datetime-local)
+         * Type Workout (chest, legs, etc) (not implemented)
 
 ## MVP CHECKLIST:
 - [x] FE logout button & BE functionality for dashboard
